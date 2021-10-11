@@ -2,25 +2,83 @@
 #include <string>
 using namespace std;
 
+typedef struct {double value; bool flag;} dataValue;
+
+class Program {
+public:
+  Program(string file);
+  void compute();
+  void reset();
+
+private:
+  int counter;
+  string file;
+};
+
+class Register {
+public:
+  Register();
+  dataValue read();
+  void write(dataValue value);
+private:
+  list<dataValue> contents;
+};
+
 class component {
 public:
   virtual void simulate();
-  virtual void load(string name);
+  component();
+
+private:
+  string label;
+};
+
+class Memory : virtual public component {
+public:
+  void simulate();
+  Memory(string label, int size, int access, string source);
+private:
+  list<dataValue> memory;
+};
+
+class Display : virtual public component {
+public:
+  void simulate();
+  Display(string label, int refresh, string source);
+};
+
+class Bus : virtual public component {
+public:
+  void simulate();
+  Bus(string label, int width, string source);
+  dataValue read();
+private:
+  list<dataValue> pending;
+  list<dataValue> ready;
+  int counter;
 };
 
 class CPU : virtual public component {
 public:
   void simulate();
-  void load(string name);
+  CPU(string label, int cores, int frequency, string prog_path);
+  dataValue read();
+private:
+  string label;
+  int cores;
+  int frequency;
+  string prog_path;
+  Program prog;
+  Register reg;
 };
 
-class platform {
+class Platform {
 public:
   void read_config();
   void load_components();
-  void start_simulation(int max_iter);
+  void simulate();
+  Platform();
 private:
   list<component> members;
 };
 
-void a_f(component salut);
