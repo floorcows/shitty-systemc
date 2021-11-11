@@ -1,3 +1,5 @@
+#ifndef CLASSES_H
+#define CLASSES_H
 #include <list>
 #include <string>
 using namespace std;
@@ -112,3 +114,4 @@ private:
   list<component> members;
 };
 
+#endif
