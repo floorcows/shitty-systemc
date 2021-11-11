@@ -27,7 +27,10 @@ private:
 class component {
 public:
   virtual void simulate();
+  
+  //constructors
   component();
+  component(string label);
 
 private:
   string label;
@@ -38,6 +41,10 @@ public:
   void simulate();
   Memory(string label, int size, int access, string source);
 private:
+  string label;
+  int size;
+  int access;
+  string source;
   list<dataValue> memory;
 };
 
@@ -45,6 +52,10 @@ class Display : virtual public component {
 public:
   void simulate();
   Display(string label, int refresh, string source);
+private:
+  string label;
+  int refresh;
+  string source;
 };
 
 class Bus : virtual public component {
@@ -61,8 +72,11 @@ private:
 class CPU : virtual public component {
 public:
   void simulate();
-  CPU(string label, int cores, int frequency, string prog_path);
   dataValue read();
+
+  //constructors
+  CPU(string label, int cores, int frequency, string prog_path);
+
 private:
   string label;
   int cores;
