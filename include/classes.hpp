@@ -6,9 +6,11 @@ typedef struct {double value; bool flag;} dataValue;
 
 class Program {
 public:
-  Program(string file);
   void compute();
   void reset();
+
+//constructors
+  Program(string file);
 
 private:
   int counter;
@@ -17,9 +19,12 @@ private:
 
 class Register {
 public:
-  Register();
   dataValue read();
   void write(dataValue value);
+
+  //constructors
+  Register();
+
 private:
   list<dataValue> contents;
 };
@@ -29,7 +34,6 @@ public:
   virtual void simulate();
   
 //constructors
-  component();
   component(string label);
 
 private:
@@ -39,7 +43,10 @@ private:
 class Memory : virtual public component {
 public:
   void simulate();
+
+  //constructors
   Memory(string label, int size, int access, string source);
+
 private:
   string label;
   int size;
@@ -51,7 +58,10 @@ private:
 class Display : virtual public component {
 public:
   void simulate();
+
+  //constructors
   Display(string label, int refresh, string source);
+
 private:
   string label;
   int refresh;
@@ -61,8 +71,11 @@ private:
 class Bus : virtual public component {
 public:
   void simulate();
-  Bus(string label, int width, string source);
   dataValue read();
+
+  //constructors
+  Bus(string label, int width, string source);
+
 private:
   list<dataValue> pending;
   list<dataValue> ready;
@@ -91,7 +104,10 @@ public:
   void read_config();
   void load_components();
   void simulate();
+
+  //constructors
   Platform();
+
 private:
   list<component> members;
 };
