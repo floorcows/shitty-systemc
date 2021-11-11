@@ -28,7 +28,7 @@ class component {
 public:
   virtual void simulate();
   
-  //constructors
+//constructors
   component();
   component(string label);
 
