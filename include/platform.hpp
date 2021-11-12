@@ -1,7 +1,7 @@
 #ifndef PLATFORM_H
 #define PLATFORM_H
 
-#include "classes.hpp"
+#include "component.hpp"
 
 class Platform {
 public:
