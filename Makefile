@@ -15,15 +15,16 @@ OBJECTS  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 DEPENDENCIES \
 	:= $(OBJECTS:.o=.d)
 
-all: build $(APP_DIR)/$(TARGET)
+all: build $(TARGET)
+
 
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(@D)
 	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -MMD -o $@
 
-$(APP_DIR)/$(TARGET): $(OBJECTS)
+$(TARGET): $(OBJECTS)
 	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -o $(APP_DIR)/$(TARGET) $^ $(LDFLAGS)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $^ $(LDFLAGS)
 
 -include $(DEPENDENCIES)
 
