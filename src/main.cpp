@@ -15,7 +15,7 @@ const string directory = "/mnt/c/robert/grenoble/phelma/3a/S9/oop/Project/github
 using namespace std;
 
 
-int main(){
+void main(){
   cout << "\t[main]Start" << endl;
 
   list<string> my_list = file_to_list(directory+"testdata/program.txt");
