@@ -1,37 +1,51 @@
-#all:
-#	g++ src/*.cpp -o out
-#
+CXX      := -c++
+CXXFLAGS := -pedantic-errors -Wall -Wextra -Werror
+LDFLAGS  := -L/usr/lib -lstdc++ -lm
+BUILD    := ./build
+OBJ_DIR  := $(BUILD)/objects
+APP_DIR  := $(BUILD)/apps
+TARGET   := output
+INCLUDE  := -Iinclude/
+SRC      :=                      \
+    $(wildcard src/*.cpp)         \
+#    $(wildcard src/module1/*.cpp) \
+#    $(wildcard src/module2/*.cpp) \
+   
+OBJECTS  := $(SRC:%.cpp=$(OBJ_DIR)/%.o)
+DEPENDENCIES \
+	:= $(OBJECTS:.o=.d)
 
-# *****************************************************
-# Variables to control Makefile operation
- 
-CC = g++
-CFLAGS = -Wall -g
+all: build $(APP_DIR)/$(TARGET)
 
-ALL_O = main.o file.o
-MAIN_CPP = src/main.cpp
-ALL_H = include/classes.hpp include/file.hpp
-ALL_C = src/main.cpp src/file.cpp
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -MMD -o $@
 
-# ****************************************************
- 
-# Targets needed to bring the executable up to date 
-main: $(ALL_C) $(ALL_H)
-	$(CC) $(CFLAGS) -o main $(ALL_C)
+$(APP_DIR)/$(TARGET): $(OBJECTS)
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) -o $(APP_DIR)/$(TARGET) $^ $(LDFLAGS)
 
+-include $(DEPENDENCIES)
 
-#****************************************************
+.PHONY: all build clean debug release info
 
+build:
+	@mkdir -p $(APP_DIR)
+	@mkdir -p $(OBJ_DIR)
 
+debug: CXXFLAGS += -DDEBUG -g
+debug: all
 
+release: CXXFLAGS += -O2
+release: all
 
+clean:
+	-@rm -rvf $(OBJ_DIR)/*
+	-@rm -rvf $(APP_DIR)/*
 
-
-
-
-
-
-
-
-
-
+info:
+   @echo "[*] Application dir: ${APP_DIR}     "
+   @echo "[*] Object dir:      ${OBJ_DIR}     "
+   @echo "[*] Sources:         ${SRC}         "
+   @echo "[*] Objects:         ${OBJECTS}     "
+   @echo "[*] Dependencies:    ${DEPENDENCIES}"

@@ -1,11 +1,11 @@
 #include <iostream>
-#include "file.h"
-#include "classes.h"
+#include "file.hpp"
+#include "classes.hpp"
 
 using namespace std;
 
 
-int main(int argc, char * argv[]){
+int main(){
   cout << "Default main function executed!" << endl;
   return 0;
 }
