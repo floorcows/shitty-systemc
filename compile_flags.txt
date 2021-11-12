@@ -1,0 +1,9 @@
+-Wall
+-Wextra
+-Werror
+-L
+/usr/lib
+-lstdc++
+-lm
+-I
+include/

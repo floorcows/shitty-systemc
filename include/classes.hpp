@@ -1,17 +1,22 @@
 #ifndef CLASSES_H
 #define CLASSES_H
+#include "file.hpp"
+#include <iostream>
 #include <list>
 #include <string>
 using namespace std;
 
-typedef struct {double value; bool flag;} dataValue;
+typedef struct {
+  double value;
+  bool flag;
+} dataValue;
 
 class Program {
 public:
   void compute();
   void reset();
 
-//constructors
+  // constructors
   Program(string file);
 
 private:
@@ -24,7 +29,7 @@ public:
   dataValue read();
   void write(dataValue value);
 
-  //constructors
+  // constructors
   Register();
 
 private:
@@ -34,9 +39,10 @@ private:
 class component {
 public:
   virtual void simulate();
-  
-//constructors
-  component(string label);
+  virtual void load(string cfg);
+
+  // constructors
+  component();
 
 private:
   string label;
@@ -45,9 +51,10 @@ private:
 class Memory : virtual public component {
 public:
   void simulate();
+  void load(string cfg);
 
-  //constructors
-  Memory(string label, int size, int access, string source);
+  // constructors
+  Memory();
 
 private:
   string label;
@@ -60,9 +67,10 @@ private:
 class Display : virtual public component {
 public:
   void simulate();
+  void load(string cfg);
 
-  //constructors
-  Display(string label, int refresh, string source);
+  // constructors
+  Display();
 
 private:
   string label;
@@ -73,10 +81,11 @@ private:
 class Bus : virtual public component {
 public:
   void simulate();
+  void load(string cfg);
   dataValue read();
 
-  //constructors
-  Bus(string label, int width, string source);
+  // constructors
+  Bus();
 
 private:
   list<dataValue> pending;
@@ -84,13 +93,14 @@ private:
   int counter;
 };
 
-class CPU : virtual public component {
+class Cpu : virtual public component {
 public:
   void simulate();
+  void load(string cfg);
   dataValue read();
 
-  //constructors
-  CPU(string label, int cores, int frequency, string prog_path);
+  // constructors
+  Cpu();
 
 private:
   string label;
@@ -100,18 +110,4 @@ private:
   Program prog;
   Register reg;
 };
-
-class Platform {
-public:
-  void read_config();
-  void load_components();
-  void simulate();
-
-  //constructors
-  Platform();
-
-private:
-  list<component> members;
-};
-
 #endif
