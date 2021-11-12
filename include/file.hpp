@@ -18,4 +18,9 @@ string find_in_cfg(string,list<option_t>);
 bool string_contains(string, string);
 double decode_and_execute(string);
 
+
+string rtrim(string);
+string ltrim(string);
+string  trim(string);
+
 #endif

@@ -11,7 +11,7 @@ public:
   Display();
 
 private:
-  string label;
+  //string label;
   int refresh;
   string source;
 };

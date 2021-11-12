@@ -33,6 +33,7 @@ class Cpu : virtual public component {
 public:
   void simulate();
   void load(string cfg);
+  void print();
   dataValue read();
 
   // constructors

@@ -15,5 +15,9 @@ private:
   list<dataValue> pending;
   list<dataValue> ready;
   int counter;
+   
+  string label;
+  int width;
+  string source;
 };
 #endif

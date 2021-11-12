@@ -7,6 +7,7 @@
 #include <sstream>
 #include <stdlib.h>
 #include <string>
+#include <algorithm>
 
 #include "file.hpp"
 #define debug_print 0
@@ -77,13 +78,13 @@ bool string_contains(string str1, string str2) {
   //-------------------------------------------------------------------------------
   //Extract a double from a string
   double string_to_double(string str){
-    return std::stod(str);
+    return stod(str);
   }
 
   //-------------------------------------------------------------------------------
   //Extract a double from a string
   double string_to_int(string str){
-    return std::stoi(str);
+    return stoi(str);
   }
 */
 
@@ -145,6 +146,8 @@ list<option_t> parse_cfg(string cfg){
     stringstream ss(line);
     getline( ss, option.field, ':' );
     getline( ss, option.data, ':' );
+	option.field = trim(option.field);
+	option.data  = trim(option.data );
     output.push_back(option);
   }
   return output;
@@ -152,10 +155,39 @@ list<option_t> parse_cfg(string cfg){
 //-------------------------------------------------------------------------------
 // Finds element in a parsed config file
 string find_in_cfg(string field,list<option_t> options){
+	field = trim(field);
   for(option_t option : options){
     if(option.field == field){
-      return option.data;
+      return trim(option.data);
     }
   }
   return "NULL_STRING";
 }
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------------
+// trim strings and remove space from both sides
+const string WHITESPACE = " \n\r\t\f\v";
+string ltrim(const string s)
+{
+    size_t start = s.find_first_not_of(WHITESPACE);
+    return (start == string::npos) ? "" : s.substr(start);
+}
+string rtrim(const string s)
+{
+    size_t end = s.find_last_not_of(WHITESPACE);
+    return (end == string::npos) ? "" : s.substr(0, end + 1);
+} 
+string trim(const string s) {
+    return rtrim(ltrim(s));
+}
+ 
+

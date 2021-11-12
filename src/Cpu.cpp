@@ -3,15 +3,48 @@
 Program::Program(){}
 Register::Register(){}
 
-void Cpu::load(string cfg){
-  cout << "cfg" << cfg;
-  list<option_t> options = parse_cfg(cfg);
-  label = find_in_cfg("LABEL", options);
-  cores = stoi(find_in_cfg("CORES", options));
-  frequency = stoi(find_in_cfg("FREQUENCY", options));
-  prog.file_path = find_in_cfg("PROGRAM", options);
-  prog.load();
+Cpu::Cpu(){
+	//TODO
+	 cout << "\t[\033[31mCpu\033[0m]constructor" << endl;
 }
+
+Cpu::~Cpu() {
+	//TODO
+	 cout << "\t[\033[31mCpu\033[0m]destructor" << endl;
+}
+
+void Cpu::load(string cfg){
+  try {
+  cout << "cfg:\t" << cfg<<endl;
+  list<option_t> options = parse_cfg(cfg);
+  label     = find_in_cfg("LABEL", options);
+  cores     = stoi(find_in_cfg("CORES", options));
+  frequency = stoi(find_in_cfg("FREQUENCY", options));
+  prog_path = find_in_cfg("PROGRAM", options);
+  prog.file_path = find_in_cfg("PROGRAM", options);
+  //prog.load(); 
+  }
+  catch (const exception &ex) {
+    cerr << "ERROR: " << ex.what() << "[Cpu.cpp:Cpu::load()]" << endl;
+    exit(1);
+  }
+}
+
+void Cpu::print(){
+cout << "[CPU Print]" <<endl;
+cout << "  Label    :\t"<<label<<endl;
+cout << "  Label    :\t"<<cores<<endl;
+cout << "  Frequency:\t"<<frequency<<endl;
+cout << "  Prog_path:\t"<<prog_path<<endl;
+cout << endl; 
+}
+
+
+
+void Cpu::simulate(){
+	//TODO
+}
+
 
 void Program::load(){
   try {
@@ -28,3 +61,5 @@ void Program::load(){
     exit(1);
   }
 }
+
+

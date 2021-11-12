@@ -2,6 +2,7 @@
 #define PLATFORM_H
 
 #include "component.hpp"
+#include "Cpu.hpp"
 
 class Platform {
 public:

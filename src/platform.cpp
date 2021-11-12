@@ -30,7 +30,8 @@ void Platform::load_components(){
       //myMemory.load(member_path);
       //members.push_back(myMemory);
     //}
-    //if( type == "DISPLAY" ){
+    //if( type == "DISPLAY
+	" ){
       //Display myDisplay;
       //myDisplay.load(member_path);
       //members.push_back(myDisplay);

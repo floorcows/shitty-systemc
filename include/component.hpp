@@ -20,10 +20,11 @@ class component {
 public:
   virtual void simulate();
   virtual void load(string cfg);
+  virtual void print();
 
   // constructors
-  component();
-  virtual ~component();
+   component();
+   virtual ~component();
 
 private:
   string label;
