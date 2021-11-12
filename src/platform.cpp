@@ -5,7 +5,7 @@
   //cout << "Initialising platform.." << endl;
   //member_paths = file_to_list(cfg);
 //}
-
+/*
 void Platform::load_components(){
   for( string member_path : member_paths ){
     list<string> cfg = file_to_list(member_path);
@@ -33,4 +33,4 @@ void Platform::load_components(){
     }
   }
 }
-
+*/
