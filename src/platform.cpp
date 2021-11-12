@@ -4,11 +4,12 @@
 #include "Display.hpp"
 #include "Bus.hpp"
 //Load the platform's config file
-Platform::Platform(string cfg){
-  cout << "Initialising platform.." << cfg << endl;
-  member_paths = file_to_list(cfg);
-}
+//Platform::Platform(string cfg){
+  //cout << "Initialising platform.." << endl;
+  //member_paths = file_to_list(cfg);
+//}
 
+/*
 void Platform::load_components(){
   for( string member_path : member_paths ){
     list<string> cfg = file_to_list(member_path);
@@ -36,4 +37,4 @@ void Platform::load_components(){
     //}
   }
 }
-
+*/
