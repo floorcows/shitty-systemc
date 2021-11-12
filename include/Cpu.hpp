@@ -6,14 +6,15 @@ class Program {
 public:
   void compute();
   void reset();
-  void load(string file);
+  void load();
+  string file_path;
 
   // constructors
   Program();
 
 private:
+  ifstream file;
   int counter;
-  string file;
 };
 
 class Register {

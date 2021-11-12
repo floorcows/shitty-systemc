@@ -14,7 +14,7 @@
 using namespace std;
 
 //-------------------------------------------------------------------------------
-// Stores each file line in a string list
+//Stores each file line in a string list
 list<string> file_to_list(string path) {
   if (debug_print) {
     cout << "\t[\033[31mfile_to_list\033[0m]" << endl;
@@ -136,3 +136,26 @@ double decode_and_execute(string commandline) {
 
 //-------------------------------------------------------------------------------
 // Parses configs
+list<option_t> parse_cfg(string cfg){
+  cout << "test\n\n";
+  list<option_t> output;
+  list<string> cfg_lines = file_to_list(cfg);
+  for(string line : cfg_lines){
+    option_t option;
+    stringstream ss(line);
+    getline( ss, option.field, ':' );
+    getline( ss, option.data, ':' );
+    output.push_back(option);
+  }
+  return output;
+}
+//-------------------------------------------------------------------------------
+// Finds element in a parsed config file
+string find_in_cfg(string field,list<option_t> options){
+  for(option_t option : options){
+    if(option.field == field){
+      return option.data;
+    }
+  }
+  return "NULL_STRING";
+}
