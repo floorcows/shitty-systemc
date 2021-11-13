@@ -13,8 +13,8 @@ public:
   Program();
 
 private:
-  ifstream file;
-  int counter;
+  list<string> program_list;
+  list<string>::iterator program_list_it;
   string file_path;
 };
 

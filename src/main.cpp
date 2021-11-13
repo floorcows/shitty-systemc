@@ -15,7 +15,7 @@ int main() {
     // for(string str : my_list){ cout<<str<<endl;}
 	
 	//---------------------------------------------------
-	
+/*
 	Cpu *test_cpu =  new Cpu() ;
 	test_cpu->load(directory+ "testdata/cpu1.txt");
 	test_cpu->print();
@@ -32,18 +32,27 @@ int main() {
 	test_disp->load(directory+ "testdata/display.txt");
 	test_disp->print();
 	
+*/
+	Cpu test_cpu;
+	test_cpu.load(directory+ "testdata/cpu1.txt");
+	test_cpu.print();
+	
+	Bus test_bus;
+	test_bus.load(directory+ "testdata/bus1.txt");
+	test_bus.print();
+	
+	Memory test_mem;
+	test_mem.load(directory+ "testdata/mem1.txt");
+	test_mem.print();
+	
+	Display test_disp;
+	test_disp.load(directory+ "testdata/display.txt");
+	test_disp.print();
 	
 	
 	//---------------------------------------------------
 	
-/*Decode an execute all CPU instruction
-    for (string str : my_list) {
-      // list<string> word_list = string_to_words(str);
-      // for(string word : word_list){cout<<word<<"\t";}
-    cout << decode_and_execute(str) << endl;
-      // cout <<endl;
-    }
-*/
+
     cout << "\t[\033[31mmain\033[0m]End" << endl;
     // Platform myPlatform("./testdata/platform.txt");
 

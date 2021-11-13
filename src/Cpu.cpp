@@ -37,7 +37,6 @@ cout << endl;
 }
 
 
-
 void Cpu::simulate(){
 	//TODO
 	
@@ -54,8 +53,6 @@ void Cpu::simulate(){
 }
  
 
-
-
  //*************************************Register***********************************
 Register::Register(){
 	cout << "\t[\033[31mRegister\033[0m]constructor" << endl;
@@ -71,20 +68,12 @@ void Program::set_file_path(string path){
 }
  
 void Program::load(){
-  try {
-	cout << "\t[\033[31mProgram\033[0m]load()" << endl;
-    ifstream f(file_path);
 
-    if (!f) {
-      cerr << "ERROR: Target file could not be opened! [Cpu.cpp:Program::load()] "
-           << endl;
-      exit(1);
-    }
-  }
-  catch (const exception &ex) {
-    cerr << "Exception: '" << ex.what() << "'!" << endl;
-    exit(1);
-  }
+	cout << "\t[\033[31mProgram\033[0m]load()" << endl;
+    
+	program_list = file_to_list(file_path);
+	program_list_it = program_list.begin();
+	
 }
 
 
