@@ -13,7 +13,7 @@ Bus::~Bus() {
 
 void Bus::load(string cfg){
   try {
-  cout << "cfg" << cfg;
+  cout << "\t[\033[31mBus\033[0m]load(" << cfg << ")"  << endl;
   list<option_t> options = parse_cfg(cfg);
   label  = find_in_cfg("LABEL", options);
   width  = stoi(find_in_cfg("WIDTH", options));
@@ -27,9 +27,9 @@ void Bus::load(string cfg){
 
 void Bus::print(){
 cout << "[Bus Print]" <<endl;
-cout << "  Label    :\t"<<label<<endl;
-cout << "  Width    :\t"<<width<<endl;
-cout << "  Source   :\t"<<source<<endl;
+cout << "   Label    :\t"<<label<<endl;
+cout << "   Width    :\t"<<width<<endl;
+cout << "   Source   :\t"<<source<<endl;
 
 cout << endl; 
 }
