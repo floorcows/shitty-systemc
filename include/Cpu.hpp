@@ -15,6 +15,7 @@ public:
 private:
   list<string> program_list;
   list<string>::iterator program_list_it;
+  
   string file_path;
 };
 
@@ -41,12 +42,13 @@ public:
   Cpu();
   ~Cpu();
 
+	Program prog; //TODO return private
 private:
   string label;
   int cores;
   int frequency;
   string prog_path;
-  Program prog;
+  
   Register reg;
 };
 #endif

@@ -54,6 +54,7 @@ int main() {
 	test_cpu.simulate();
 	test_cpu.simulate();
 	test_cpu.simulate();
+	test_cpu.prog.reset();
 	test_cpu.simulate();
 	test_cpu.simulate();
 	test_cpu.simulate();

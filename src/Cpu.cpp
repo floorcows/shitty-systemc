@@ -88,8 +88,9 @@ void Program::compute(){
 
 void Program::reset(){
 	
-	
+	cout << endl;
 	cout << "\t[\033[31mProgram\033[0m]reset()" << endl;
+	cout << endl;
     program_list_it = program_list.begin();
 	
 }
