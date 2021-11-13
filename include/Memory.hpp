@@ -6,10 +6,12 @@ class Memory : virtual public component {
 public:
   void simulate();
   void load(string cfg);
-
+  void print();
+  
   // constructors
   Memory();
-
+  ~Memory();
+  
 private:
   string label;
   int size;

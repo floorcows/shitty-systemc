@@ -33,7 +33,7 @@ void Cpu::load(string cfg){
 void Cpu::print(){
 cout << "[CPU Print]" <<endl;
 cout << "  Label    :\t"<<label<<endl;
-cout << "  Label    :\t"<<cores<<endl;
+cout << "  Cores    :\t"<<cores<<endl;
 cout << "  Frequency:\t"<<frequency<<endl;
 cout << "  Prog_path:\t"<<prog_path<<endl;
 cout << endl; 

@@ -3,6 +3,10 @@
 
 #include "component.hpp"
 #include "Cpu.hpp"
+#include "Bus.hpp"
+#include "Memory.hpp"
+#include "Display.hpp"
+
 
 class Platform {
 public:

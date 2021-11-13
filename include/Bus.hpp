@@ -7,10 +7,12 @@ public:
   void simulate();
   void load(string cfg);
   dataValue read();
-
+  void print();
+  
   // constructors
   Bus();
-
+  ~Bus();
+  
 private:
   list<dataValue> pending;
   list<dataValue> ready;

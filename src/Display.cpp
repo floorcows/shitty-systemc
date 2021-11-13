@@ -1,5 +1,14 @@
 #include "Display.hpp"
 
+Display::Display(){
+	//TODO
+	 cout << "\t[\033[31mDisplay\033[0m]constructor" << endl;
+}
+
+Display::~Display() {
+	//TODO
+	 cout << "\t[\033[31mDisplay\033[0m]destructor" << endl;
+}
 
 void Display::load(string cfg){
   try {
@@ -14,3 +23,13 @@ void Display::load(string cfg){
   }
 }
 
+void Display::print(){
+cout << "[Display Print]" <<endl;
+cout << "  Refresh  :\t"<<refresh<<endl;
+cout << "  Source   :\t"<<source<<endl;
+cout << endl; 
+}
+
+void Display::simulate(){
+	//TODO
+}

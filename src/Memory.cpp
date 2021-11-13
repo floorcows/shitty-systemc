@@ -1,5 +1,15 @@
 #include "Memory.hpp"
 
+Memory::Memory(){
+	//TODO
+	 cout << "\t[\033[31mMemory\033[0m]constructor" << endl;
+}
+
+Memory::~Memory() {
+	//TODO
+	 cout << "\t[\033[31mMemory\033[0m]destructor" << endl;
+}
+
 
 void Memory::load(string cfg){
   try {
@@ -17,4 +27,16 @@ void Memory::load(string cfg){
   }
 }
 
+void Memory::print(){
+cout << "[Memory Print]" <<endl;
+cout << "  Label    :\t"<<label<<endl;
+cout << "  Size     :\t"<<size<<endl;
+cout << "  Access   :\t"<<access<<endl;
+cout << "  Source   :\t"<<source<<endl;
+//list<dataValue> memory;
+cout << endl; 
+}
 
+void Memory::simulate(){
+	//TODO
+}

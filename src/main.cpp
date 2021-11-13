@@ -20,6 +20,20 @@ int main() {
 	test_cpu->load(directory+ "testdata/cpu1.txt");
 	test_cpu->print();
 	
+	Bus *test_bus =  new Bus() ;
+	test_bus->load(directory+ "testdata/bus1.txt");
+	test_bus->print();
+	
+	Memory *test_mem =  new Memory() ;
+	test_mem->load(directory+ "testdata/mem1.txt");
+	test_mem->print();
+	
+	Display *test_disp =  new Display() ;
+	test_disp->load(directory+ "testdata/display.txt");
+	test_disp->print();
+	
+	
+	
 	//---------------------------------------------------
 	
 /*Decode an execute all CPU instruction
