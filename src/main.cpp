@@ -49,6 +49,18 @@ int main() {
 	test_disp.load(directory+ "testdata/display.txt");
 	test_disp.print();
 	
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	
+	cout << endl <<endl;
+
 	
 	//---------------------------------------------------
 	

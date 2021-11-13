@@ -48,7 +48,9 @@ void Cpu::simulate(){
       // cout <<endl;
     }
 	*/
-
+	
+	prog.compute();
+	
 	
 }
  
@@ -76,4 +78,11 @@ void Program::load(){
 	
 }
 
+void Program::compute(){
+	
+	string str = *program_list_it;
+	cout << "\t[\033[31mProgram\033[0m]compute(" << str <<")\t" << decode_and_execute(str)<<endl;
+	program_list_it++;
+	
+}
 
