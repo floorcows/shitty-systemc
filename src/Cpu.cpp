@@ -81,7 +81,9 @@ void Program::load(){
 void Program::compute(){
 	
 	string str = *program_list_it;
-	cout << "\t[\033[31mProgram\033[0m]compute(" << str <<")\t" << decode_and_execute(str)<<endl;
+	double val = decode_and_execute(str);
+	// TODO add val to the fifo register of the cpu 
+	cout << "\t[\033[31mProgram\033[0m]compute(" << str <<")\t" << val <<endl;
 	program_list_it++;
 	
 }
