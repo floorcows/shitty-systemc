@@ -7,7 +7,7 @@ public:
   void compute();
   void reset();
   void load();
-  string file_path;
+  void set_file_path(string path);
 
   // constructors
   Program();
@@ -15,6 +15,7 @@ public:
 private:
   ifstream file;
   int counter;
+  string file_path;
 };
 
 class Register {

@@ -138,7 +138,7 @@ double decode_and_execute(string commandline) {
 //-------------------------------------------------------------------------------
 // Parses configs
 list<option_t> parse_cfg(string cfg){
-  cout << "test\n\n";
+  //cout << "test\n\n";
   list<option_t> output;
   list<string> cfg_lines = file_to_list(cfg);
   for(string line : cfg_lines){

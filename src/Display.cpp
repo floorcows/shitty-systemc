@@ -12,7 +12,7 @@ Display::~Display() {
 
 void Display::load(string cfg){
   try {
-  cout << "cfg" << cfg;
+  cout << "\t[\033[31mDisplay\033[0m]load(" << cfg << ")"  << endl;
   list<option_t> options = parse_cfg(cfg);
   source  = find_in_cfg("SOURCE", options);
   refresh = stoi(find_in_cfg("REFRESH", options));
@@ -25,8 +25,8 @@ void Display::load(string cfg){
 
 void Display::print(){
 cout << "[Display Print]" <<endl;
-cout << "  Refresh  :\t"<<refresh<<endl;
-cout << "  Source   :\t"<<source<<endl;
+cout << "   Refresh  :\t"<<refresh<<endl;
+cout << "   Source   :\t"<<source<<endl;
 cout << endl; 
 }
 
