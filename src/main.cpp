@@ -112,6 +112,10 @@ int main() {
 	cerr << "Exception: '" << ex.what() << "' in [main()]" << endl;
     exit(1);
   }
+	Platform myPlatform("testdata/platform.txt");
+	myPlatform.load_components();
+	myPlatform.print();
+
   exit(0);
 
   return 0;

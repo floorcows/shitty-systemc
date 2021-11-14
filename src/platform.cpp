@@ -20,23 +20,23 @@ void Platform::load_components(){
     getline( ss, type, ':' );
     type = trim(type);
     if( type == "CPU" ){
-      Cpu myCpu;
-      myCpu.load(member_path);
+      Cpu * myCpu = new Cpu;
+      myCpu->load(member_path);
       members.push_back(myCpu);
     }
     if( type == "BUS" ){
-      Bus myBus;
-      myBus.load(member_path);
+      Bus * myBus = new Bus;
+      myBus->load(member_path);
       members.push_back(myBus);
     }
     if( type == "MEMORY" ){
-      Memory myMemory;
-      myMemory.load(member_path);
+      Memory * myMemory = new Memory;
+      myMemory->load(member_path);
       members.push_back(myMemory);
     }
     if( type == "DISPLAY" ){
-      Display myDisplay;
-      myDisplay.load(member_path);
+      Display * myDisplay = new Display;
+      myDisplay->load(member_path);
       members.push_back(myDisplay);
     }
   }
@@ -44,8 +44,8 @@ void Platform::load_components(){
 
 void Platform::print(){
   cout << "Printing platform's contents!" << endl;
-  for(component comp : members){
-    comp.print();
+  for(component * comp : members){
+    comp->print();
   }
   cout << "Done printing! kitler" << endl;
 }

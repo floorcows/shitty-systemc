@@ -18,7 +18,7 @@ public:
   Platform(string cfg);
 
 private:
-  list<component> members;
+  list<component *> members;
   list<string> member_paths;
 };
 
