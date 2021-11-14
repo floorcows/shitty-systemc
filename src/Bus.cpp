@@ -29,38 +29,53 @@ void Bus::print() {
   cout << endl;
 }
 
-void Bus::bind(list<component *> members){
-  if(IS_DEBUG_ON) cout << "Binding Bus: " << label << endl;
-  for( component * member : members ){
-    if( !source.compare(member->get_label()) ){
+void Bus::bind(list<component *> members) {
+  if (IS_DEBUG_ON)
+    cout << "Binding Bus: " << label << endl;
+  for (component *member : members) {
+    if (!source.compare(member->get_label())) {
       sourcePointer = member;
     }
   }
   DEBUG("Bus is bound to: ");
-  if(IS_DEBUG_ON) sourcePointer->print();
+  if (IS_DEBUG_ON)
+    sourcePointer->print();
 }
 
 // Bus simulation step
 void Bus::simulate() {
-   if(IS_DEBUG_ON) cout  << "\t[\033[31mBus: " << label << "\033[0m]simulate" << endl;
+  if (IS_DEBUG_ON)
+    cout << "\t[\033[31mBus: " << label << "\033[0m]simulate" << endl;
 
-  //Moving pending values to ready values
-  while( !pending.empty() ){
+  // Moving pending values to ready values
+  while (!pending.empty()) {
     ready.push_back(pending.back());
-    if(IS_DEBUG_ON) cout << "Moving value: " << pending.back().value << " to Ready" << endl;
+    if (IS_DEBUG_ON)
+      cout << "Moving value: " << pending.back().value << " to Ready" << endl;
     pending.pop_back();
   }
 
   // Fetching new pending values (only up to bus.width)
   int counter = 0;
   dataValue value;
-  while(counter < width && (value = sourcePointer->read()).flag){
+  while (counter < width && (value = sourcePointer->read()).flag) {
     counter++;
     pending.push_front(value);
-    if(IS_DEBUG_ON) cout << "Moving value number" << counter << ": " << pending.front().value << " to Pending" << endl;
-    if(IS_DEBUG_ON) cout << "Pending: ";
-    if(IS_DEBUG_ON){
-      for(dataValue value : pending){
+    if (IS_DEBUG_ON)
+      cout << "Moving value number" << counter << ": " << pending.front().value
+           << " to Pending" << endl;
+    if (IS_DEBUG_ON)
+      cout << "Pending: ";
+    if (IS_DEBUG_ON) {
+      for (dataValue value : pending) {
+        cout << value.value << " | ";
+      }
+      cout << endl;
+    }
+    if (IS_DEBUG_ON)
+      cout << "Ready: ";
+    if (IS_DEBUG_ON) {
+      for (dataValue value : ready) {
         cout << value.value << " | ";
       }
       cout << endl;
@@ -69,23 +84,23 @@ void Bus::simulate() {
 }
 
 // Get bus label
-string Bus::get_label(){
-  return label;
-}
+string Bus::get_label() { return label; }
 
-dataValue Bus::read(){
-  //TODO A bus does not return 0 value
+dataValue Bus::read() {
+  // TODO A bus does not return 0 value
   DEBUG("Calling read() on Bus!");
-  
-  dataValue dv = {0,0};
-  dv.flag = !ready.empty();	
-  if(dv.flag){
-  dv.value = ready.front().value;
-  pending.pop_front();
+
+  dataValue dv = {0, 0};
+  dv.flag = !ready.empty();
+  if(!dv.flag && IS_DEBUG_ON) cout << "Empty bus, do not proceed" << endl;
+  if (dv.flag) {
+    if(IS_DEBUG_ON) cout << "ready.front()" << endl;
+    dv.value = ready.front().value;
+    if(IS_DEBUG_ON) cout << "pop.front()" << endl;
+    ready.pop_front();
   }
-  
+
   return dv;
-  
-  
-  //return {0,0};
+
+  // return {0,0};
 }
