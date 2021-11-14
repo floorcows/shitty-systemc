@@ -21,7 +21,7 @@ public:
   virtual void simulate();
   virtual void load(string cfg);
   virtual void print();
-  virtual void bind(list<component *> member) { member.size(); }
+  virtual void bind(list<component *> member);
   virtual string get_label() {
     return "NULL";
     DEBUG("Calling get_label on component!");

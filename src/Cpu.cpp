@@ -143,6 +143,8 @@ dataValue Cpu::read() {
 }
 
 string Cpu::get_label() { return label; }
+
+void bind(list<component *> member) { member.size(); }
 //*************************************Program***********************************
 Program::Program() {
   if (IS_DEBUG_ON)

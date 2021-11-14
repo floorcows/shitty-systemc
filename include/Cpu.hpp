@@ -26,7 +26,7 @@ public:
   double read();
   void write(double value);
   bool is_not_empty();
-  void bind(list<component *> member) { member.size(); }
+  void bind(list<component *> member);
 
   // constructors
   Register();
