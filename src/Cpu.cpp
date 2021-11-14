@@ -3,6 +3,7 @@
 Cpu::Cpu(){
 	//TODO
 	 cout << "\t[\033[31mCpu\033[0m]constructor" << endl;
+	 current_active_core = 0 ;
 }
 
 Cpu::~Cpu() {
@@ -22,6 +23,7 @@ void Cpu::load(string cfg){
   prog.load(); 
   }
   catch (const exception &ex) {
+	cout << "ERROR: " << ex.what() << "[Cpu.cpp:Cpu::load()]" << endl;  
     cerr << "ERROR: " << ex.what() << "[Cpu.cpp:Cpu::load()]" << endl;
     exit(1);
   }
@@ -38,22 +40,87 @@ cout << endl;
 
 
 void Cpu::simulate(){
-	//TODO
 	
-    /*Decode an execute all CPU instruction
-    for (string str : my_list) {
-      // list<string> word_list = string_to_words(str);
-      // for(string word : word_list){cout<<word<<"\t";}
-    cout << decode_and_execute(str) << endl;
-      // cout <<endl;
-    }
-	*/
-	
-	prog.compute();
-	
+	cout << "\t[\033[31mCpu\033[0m]simulate"<< endl;
+	for ( int i = 0 ; i< frequency ; i++){	
+		string commandline =  prog.compute();
+		if (!prog.get_done()){
+	 	  string str_cmd;
+	 	  string str_a;
+	 	  string str_b;
+	 	  
+	 	  try{	  
+	 	    list<string> word_list = string_to_words(commandline);
+	 	    list<string>::iterator it;
+	 	    it = word_list.begin();
+	 	    str_cmd = *it;
+	 	    it++;
+	 	    str_a = *it;
+	 	    it++;
+	 	    str_b = *it;
+	 	    it++;
+	 	    cout << "\tcmd:" << str_cmd << "\ta:" << str_a << "\tb:" << str_b << "\t";
+	 	  }
+          catch (const exception &ex) {
+			cout << "ERROR: " << ex.what() << "[Cpu.cpp:Cpu::simulate()] missing parameters" << endl;
+            cerr << "ERROR: " << ex.what() << "[Cpu.cpp:Cpu::simulate()] missing parameters" << endl;
+            exit(1);
+          }
+	 	  double val = 0;		 
+	 	  try {
+	 	    double a = 0;
+	 	    double b = 0;
+	 	    if (string_contains(str_cmd, "ADD")) {
+	 	      a = stod(str_a);
+	 	      b = stod(str_b);
+	 	      val = (a + b);
+	 	    } else if (string_contains(str_cmd, "SUB")) {
+	 	      a = stod(str_a);
+	 	      b = stod(str_b);
+	 	      val = (a - b);
+	 	    } else if (string_contains(str_cmd, "MUL")) {
+	 	      a = stod(str_a);
+	 	      b = stod(str_b);
+	 	      val = (a * b);
+	 	    } else if (string_contains(str_cmd, "DIV")) {
+	 	      a = stod(str_a);
+	 	      b = stod(str_b);
+	 	      val = (a / b);
+	 	    } else if (string_contains(str_cmd, "NOP")) {
+	 	      val = 0;
+	 	    } else {
+	 	      throw "CPU instruction not recognized";
+	 	    }
+	 	   }
+		  catch(const exception &ex) {
+             cout << "ERROR: " << ex.what() << "[Cpu.cpp:Cpu::simulate()] error in executing instruction " << endl;
+             cerr << "ERROR: " << ex.what() << "[Cpu.cpp:Cpu::simulate()] error in executing instruction " << endl;
+             exit(1);
+           }
+	 	  cout << val  <<endl;
+	      // TODO add val to the fifo register of the cpu */
+	 
+	   }
+	   else{
+		   if( current_active_core < (cores - 1)){
+			 current_active_core++;
+			 cout<< "**********************************************************************************"<<endl;
+			 cout<< "*********************************CORE #"<<current_active_core;
+			 cout<< " enabeled*********************************"<<endl;
+			 cout<< "**********************************************************************************"<<endl;
+			 
+		     prog.reset();
+		   }
+	   }
+	}
 	
 }
  
+
+ 
+		
+
+
 
  //*************************************Register***********************************
 Register::Register(){
@@ -63,6 +130,7 @@ Register::Register(){
  //*************************************Program***********************************
 Program::Program(){
 	cout << "\t[\033[31mProgram\033[0m]constructor" << endl;
+	done = false ;
 }
 
 void Program::set_file_path(string path){
@@ -70,23 +138,48 @@ void Program::set_file_path(string path){
 }
  
 void Program::load(){
-
+	
 	cout << "\t[\033[31mProgram\033[0m]load()" << endl;
-    
-	program_list = file_to_list(file_path);
-	program_list_it = program_list.begin();
+    program_list = file_to_list(file_path);	
+    program_list_it = program_list.begin();
 	
 }
 
-void Program::compute(){
-	
-	string str = *program_list_it;
-	double val = decode_and_execute(str);
-	// TODO add val to the fifo register of the cpu 
-	cout << "\t[\033[31mProgram\033[0m]compute(" << str <<")\t" << val <<endl;
-	program_list_it++;
+string Program::compute(){
+	cout << "\t[\033[31mProgram\033[0m]compute" <<endl;
+
+	if (program_list_it != program_list.end()){
+	   string str = *program_list_it;
+	   program_list_it++;	   
+	   return str;
+	 }
+	else {
+	  done = true;
+	  return "NOP 0 0";
+	}
 	
 }
+/*
+string Program::compute(){
+	cout << "\t[\033[31mProgram\033[0m]compute" <<endl;
+
+	if (!done){
+	   string str = *program_list_it;
+	   if(program_list_it != program_list.end()){
+	   	program_list_it++; 
+	   }		
+	   else{
+	     done = true;
+		}
+	   return str;
+	 }
+	else {
+	  return "NOP 0 0";
+	}
+	
+}
+*/
+
 
 void Program::reset(){
 	
@@ -94,6 +187,11 @@ void Program::reset(){
 	cout << "\t[\033[31mProgram\033[0m]reset()" << endl;
 	cout << endl;
     program_list_it = program_list.begin();
+	done = false;
 	
+}
+
+bool Program::get_done(){
+	return done;
 }
 

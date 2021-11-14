@@ -50,15 +50,53 @@ int main() {
 	test_disp.print();
 	
 	test_cpu.simulate();
-	test_cpu.simulate();
-	test_cpu.simulate();
-	test_cpu.simulate();
-	test_cpu.simulate();
 	test_cpu.prog.reset();
 	test_cpu.simulate();
 	test_cpu.simulate();
 	test_cpu.simulate();
+	test_cpu.simulate();	
 	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();	
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();	
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();	
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();	
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();	
+	test_cpu.simulate();
+
+
+	
 	
 	cout << endl <<endl;
 
@@ -70,7 +108,8 @@ int main() {
     // Platform myPlatform("./testdata/platform.txt");
 
   } catch (const exception &ex) {
-    cerr << "Exception: '" << ex.what() << "'!" << endl;
+	cout << "Exception: '" << ex.what() << "' in [main()]" << endl;
+	cerr << "Exception: '" << ex.what() << "' in [main()]" << endl;
     exit(1);
   }
   exit(0);

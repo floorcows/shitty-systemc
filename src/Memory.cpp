@@ -22,6 +22,7 @@ void Memory::load(string cfg){
   //list<dataValue> memory;
   }
   catch (const exception &ex) {
+    cout << "ERROR: " << ex.what() << "[Memory.cpp:Memory::load()]" << endl;
     cerr << "ERROR: " << ex.what() << "[Memory.cpp:Memory::load()]" << endl;
     exit(1);
   }
