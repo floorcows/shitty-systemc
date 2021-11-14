@@ -87,16 +87,11 @@ void Bus::simulate() {
 string Bus::get_label() { return label; }
 
 dataValue Bus::read() {
-  // TODO A bus does not return 0 value
-  DEBUG("Calling read() on Bus!");
-
   dataValue dv = {0, 0};
   dv.flag = !ready.empty();
   if(!dv.flag && IS_DEBUG_ON) cout << "Empty bus, do not proceed" << endl;
   if (dv.flag) {
-    if(IS_DEBUG_ON) cout << "ready.front()" << endl;
     dv.value = ready.front().value;
-    if(IS_DEBUG_ON) cout << "pop.front()" << endl;
     ready.pop_front();
   }
 

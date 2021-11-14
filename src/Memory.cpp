@@ -69,7 +69,6 @@ void Memory::simulate() {
 string Memory::get_label() { return label; }
 
 dataValue Memory::read() {
-  DEBUG("Calling read() on Memory!");
   dataValue out;
   if (memory.empty()) {
     out.flag = 0;
@@ -80,7 +79,6 @@ dataValue Memory::read() {
   }
 
   if (IS_DEBUG_ON)
-    cout << "READ " << out.value << " " << out.flag << endl;
   return out;
 }
 
