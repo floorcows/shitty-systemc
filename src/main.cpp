@@ -33,7 +33,7 @@ int main() {
 	test_disp->print();
 	
 */
-/*	Cpu test_cpu;
+	Cpu test_cpu;
 	test_cpu.load(directory+ "testdata/cpu1.txt");
 	test_cpu.print();
 	
@@ -50,7 +50,7 @@ int main() {
 	test_disp.print();
 	
 	test_cpu.simulate();
-	test_cpu.prog.reset();
+	//test_cpu.prog.reset();
 	test_cpu.simulate();
 	test_cpu.simulate();
 	test_cpu.simulate();
@@ -99,21 +99,31 @@ int main() {
 	
 	
 	cout << endl <<endl;
-*/
-	
-	//---------------------------------------------------
-	
-	Platform myPlatform("testdata/platform.txt");
-	myPlatform.load_components();
-	myPlatform.print();
-	
-	for (int kitler = 1 ; kitler <145 ; kitler ++){
-	myPlatform.simulate();
+	int counter =0;
+	dataValue dv = test_cpu.read();
+	while(dv.flag){ 
+      cout <<dv.value << endl;	
+	  dv = test_cpu.read();
+	  counter ++;
 	}
+	cout << "counter= "<< counter <<endl;
 	
+	
+					/*----------------well done main------------------------------------------------------------------	
+						Platform myPlatform("testdata/platform.txt");
+						myPlatform.load_components();
+						myPlatform.print();
+						
+						for (int kitler = 1 ; kitler <145 ; kitler ++){
+						myPlatform.simulate();
+						}
+						
 
-    cout << "\t[\033[31mmain\033[0m]End" << endl;
-    // Platform myPlatform("./testdata/platform.txt");
+						cout << "\t[\033[31mmain\033[0m]End" << endl;
+						// Platform myPlatform("./testdata/platform.txt");
+
+					----------------well done main------------------------------------------------------------------*/
+
 
   } catch (const exception &ex) {
 	cout << "Exception: '" << ex.what() << "' in [main()]" << endl;
