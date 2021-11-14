@@ -44,9 +44,11 @@ void Display::simulate() {
 	  refresh_counter= 0;
 	  
 	  dataValue dv = read();
-	  if (dv.flag) cout  << "[\033[31mDisplay\033[0m]:\t" ;
+
+	  if (dv.flag) cout  << "\t[\033[34mDisplay\033[0m]:\t" ;
+
       while (dv.flag) {
-        cout << dv.value << endl << "\t\t";
+        cout << dv.value << endl << "\t\t\t";
         dv = read();
       }
 	  cout << endl;
@@ -59,8 +61,6 @@ string Display::get_label(){
 }
 
 dataValue Display::read(){
-  DEBUG("Calling read() on Display! Reading from "+sourcePointer->get_label() +". ");
-  //TODO A Display does not return 0 value
   return sourcePointer->read();
   return {0,0};
 

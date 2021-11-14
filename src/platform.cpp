@@ -54,7 +54,6 @@ void Platform::simulate() {
   for (component *comp : members) {
     comp->simulate();
   }
-  if(IS_DEBUG_ON) cout << "Done simulating! kitler" << endl;
 }
 
 void Platform::bind() {
