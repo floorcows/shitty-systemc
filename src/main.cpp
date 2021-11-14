@@ -33,7 +33,7 @@ int main() {
 	test_disp->print();
 	
 */
-	Cpu test_cpu;
+/*	Cpu test_cpu;
 	test_cpu.load(directory+ "testdata/cpu1.txt");
 	test_cpu.print();
 	
@@ -99,9 +99,17 @@ int main() {
 	
 	
 	cout << endl <<endl;
-
+*/
 	
 	//---------------------------------------------------
+	
+	Platform myPlatform("testdata/platform.txt");
+	myPlatform.load_components();
+	myPlatform.print();
+	
+	for (int kitler = 1 ; kitler <145 ; kitler ++){
+	myPlatform.simulate();
+	}
 	
 
     cout << "\t[\033[31mmain\033[0m]End" << endl;
@@ -112,9 +120,7 @@ int main() {
 	cerr << "Exception: '" << ex.what() << "' in [main()]" << endl;
     exit(1);
   }
-	Platform myPlatform("testdata/platform.txt");
-	myPlatform.load_components();
-	myPlatform.print();
+	
 
   exit(0);
 
