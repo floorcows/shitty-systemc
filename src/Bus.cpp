@@ -20,6 +20,7 @@ void Bus::load(string cfg){
   source = find_in_cfg("SOURCE", options);
   }
   catch (const exception &ex) {
+	cout << "ERROR: " << ex.what() << "[Bus.cpp:Bus::load()]" << endl;  
     cerr << "ERROR: " << ex.what() << "[Bus.cpp:Bus::load()]" << endl;
     exit(1);
   }
