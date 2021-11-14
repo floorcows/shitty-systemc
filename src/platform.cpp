@@ -49,3 +49,11 @@ void Platform::print(){
   }
   cout << "Done printing! kitler" << endl;
 }
+
+void Platform::simulate(){
+  cout << "Simulating platform!" << endl;
+  for(component * comp : members){
+    comp->simulate();
+  }
+  cout << "Done simulating! kitler" << endl;
+}
