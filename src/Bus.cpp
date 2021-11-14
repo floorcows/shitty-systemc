@@ -54,7 +54,7 @@ void Bus::simulate() {
   // Fetching new pending values (only up to bus.width)
   int counter = 0;
   dataValue value;
-  while((value = sourcePointer->read()).flag && counter < width){
+  while(counter < width && (value = sourcePointer->read()).flag){
     counter++;
     pending.push_front(value);
     if(IS_DEBUG_ON) cout << "Moving value number" << counter << ": " << pending.front().value << " to Pending" << endl;
