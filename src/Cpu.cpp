@@ -1,14 +1,12 @@
 #include "Cpu.hpp"
 //*************************************Cpu***********************************
 Cpu::Cpu() {
-  // TODO
-  cout << "\t[\033[31mCpu\033[0m]constructor" << endl;
+  if(IS_DEBUG_ON) cout << "\t[\033[31mCpu\033[0m]constructor" << endl;
   current_active_core = 0;
 }
 
 Cpu::~Cpu() {
-  // TODO
-  cout << "\t[\033[31mCpu\033[0m]destructor" << endl;
+  if(IS_DEBUG_ON) cout << "\t[\033[31mCpu\033[0m]destructor" << endl;
 }
 
 void Cpu::load(string cfg) {

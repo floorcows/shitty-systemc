@@ -1,12 +1,10 @@
 #include "Bus.hpp"
 
 Bus::Bus() {
-  // TODO
   if(IS_DEBUG_ON) cout << "\t[\033[31mBus\033[0m]constructor" << endl;
 }
 
 Bus::~Bus() {
-  // TODO
   if(IS_DEBUG_ON) cout << "\t[\033[31mBus\033[0m]destructor" << endl;
 }
 
@@ -28,7 +26,6 @@ void Bus::print() {
   cout << "   Label    :\t" << label << endl;
   cout << "   Width    :\t" << width << endl;
   cout << "   Source   :\t" << source << endl;
-
   cout << endl;
 }
 
@@ -60,6 +57,7 @@ string Bus::get_label(){
 }
 
 dataValue Bus::read(){
+  //TODO A bus does not return 0 value
   DEBUG("Calling read() on Bus!");
   return {0,0};
 }

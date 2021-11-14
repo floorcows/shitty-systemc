@@ -1,13 +1,11 @@
 #include "Display.hpp"
 
 Display::Display() {
-  // TODO
-  cout << "\t[\033[31mDisplay\033[0m]constructor" << endl;
+  if(IS_DEBUG_ON) cout << "\t[\033[31mDisplay\033[0m]constructor" << endl;
 }
 
 Display::~Display() {
-  // TODO
-  cout << "\t[\033[31mDisplay\033[0m]destructor" << endl;
+  if(IS_DEBUG_ON) cout << "\t[\033[31mDisplay\033[0m]destructor" << endl;
 }
 
 void Display::load(string cfg) {
