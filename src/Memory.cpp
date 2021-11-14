@@ -50,10 +50,11 @@ void Memory::simulate() {
   current_access = 0;
   dataValue value;
   while ((value = sourcePointer->read()).flag) {
-    if (IS_DEBUG_ON)
-      if(IS_DEBUG_ON) cout << "\t Adding value: " << value.value << " to memory." << endl;
-    if (memory.size() == size)
+    if(IS_DEBUG_ON) cout << "\t Adding value: " << value.value << " to memory." << endl;
+    if (memory.size() == size){
+      if(IS_DEBUG_ON) cout << "Memory full, dumping value" << endl;
       return;
+    }
     memory.push_front(value);
   }
   if(IS_DEBUG_ON){
