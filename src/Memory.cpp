@@ -78,7 +78,6 @@ dataValue Memory::read() {
     memory.pop_back();
   }
 
-  if (IS_DEBUG_ON)
   return out;
 }
 

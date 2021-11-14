@@ -44,6 +44,7 @@ void Platform::load_components() {
 void Platform::print() {
   cout << "Printing platform's contents!" << endl;
   for (component *comp : members) {
+    cout << "##############################################" << endl;
     comp->print();
   }
   cout << "Done printing! kitler" << endl;
