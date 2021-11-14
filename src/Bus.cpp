@@ -78,9 +78,9 @@ dataValue Bus::read(){
   DEBUG("Calling read() on Bus!");
   
   dataValue dv = {0,0};
-  dv.flag = !pending.empty();	
+  dv.flag = !ready.empty();	
   if(dv.flag){
-  dv.value = pending.front().value;
+  dv.value = ready.front().value;
   pending.pop_front();
   }
   
