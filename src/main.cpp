@@ -48,6 +48,105 @@ int main() {
   }
   catch (const exception &ex) {
     cerr << "Exception: '" << ex.what() << "'!" << endl;
+	
+	//---------------------------------------------------
+/*
+	Cpu *test_cpu =  new Cpu() ;
+	test_cpu->load(directory+ "testdata/cpu1.txt");
+	test_cpu->print();
+	
+	Bus *test_bus =  new Bus() ;
+	test_bus->load(directory+ "testdata/bus1.txt");
+	test_bus->print();
+	
+	Memory *test_mem =  new Memory() ;
+	test_mem->load(directory+ "testdata/mem1.txt");
+	test_mem->print();
+	
+	Display *test_disp =  new Display() ;
+	test_disp->load(directory+ "testdata/display.txt");
+	test_disp->print();
+	
+*/
+	Cpu test_cpu;
+	test_cpu.load(directory+ "testdata/cpu1.txt");
+	test_cpu.print();
+	
+	Bus test_bus;
+	test_bus.load(directory+ "testdata/bus1.txt");
+	test_bus.print();
+	
+	Memory test_mem;
+	test_mem.load(directory+ "testdata/mem1.txt");
+	test_mem.print();
+	
+	Display test_disp;
+	test_disp.load(directory+ "testdata/display.txt");
+	test_disp.print();
+	
+	test_cpu.simulate();
+	test_cpu.prog.reset();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();	
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();	
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();	
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();	
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();	
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();
+	test_cpu.simulate();	
+	test_cpu.simulate();
+
+
+	
+	
+	cout << endl <<endl;
+
+>>>>>>> shitty-robert
+	
+	//---------------------------------------------------
+	
+
+    cout << "\t[\033[31mmain\033[0m]End" << endl;
+    // Platform myPlatform("./testdata/platform.txt");
+
+  } catch (const exception &ex) {
+	cout << "Exception: '" << ex.what() << "' in [main()]" << endl;
+	cerr << "Exception: '" << ex.what() << "' in [main()]" << endl;
+>>>>>>> 076a05a30766aadd366518b23289ff886c8fb013
     exit(1);
   }
   exit(0);

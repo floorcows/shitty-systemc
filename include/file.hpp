@@ -16,7 +16,7 @@ list<option_t> parse_cfg(string);
 string find_in_cfg(string,list<option_t>);
 
 bool string_contains(string, string);
-double decode_and_execute(string);
+
 
 
 string rtrim(string);

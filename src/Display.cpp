@@ -18,6 +18,7 @@ void Display::load(string cfg){
   refresh = stoi(find_in_cfg("REFRESH", options));
   }
   catch (const exception &ex) {
+    cout << "ERROR: " << ex.what() << "[Display.cpp:Display::load()]" << endl;
     cerr << "ERROR: " << ex.what() << "[Display.cpp:Display::load()]" << endl;
     exit(1);
   }

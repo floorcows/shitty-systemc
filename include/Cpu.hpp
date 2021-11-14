@@ -4,17 +4,20 @@
 
 class Program {
 public:
-  void compute();
+  string compute();
   void reset();
   void load();
-  string file_path;
-
+  void set_file_path(string path);
+  bool get_done();
   // constructors
   Program();
 
 private:
-  ifstream file;
-  int counter;
+  list<string> program_list;
+  list<string>::iterator program_list_it;
+  
+  string file_path;
+  bool done;
 };
 
 class Register {
@@ -39,13 +42,15 @@ public:
   // constructors
   Cpu();
   ~Cpu();
-
+  
+	Program prog; //TODO return private
 private:
   string label;
   int cores;
   int frequency;
   string prog_path;
-  Program prog;
+  int current_active_core;
+  
   Register reg;
 };
 #endif
