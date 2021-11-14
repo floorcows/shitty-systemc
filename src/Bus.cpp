@@ -1,16 +1,16 @@
 #include "Bus.hpp"
 
 Bus::Bus() {
-  if(IS_DEBUG_ON)  if(IS_DEBUG_ON) cout  << "\t[\033[31mBus\033[0m]constructor" << endl;
+  if(IS_DEBUG_ON)   cout  << "\t[\033[31mBus\033[0m]constructor" << endl;
 }
 
 Bus::~Bus() {
-  if(IS_DEBUG_ON)  if(IS_DEBUG_ON) cout  << "\t[\033[31mBus\033[0m]destructor" << endl;
+  if(IS_DEBUG_ON) cout  << "\t[\033[31mBus\033[0m]destructor" << endl;
 }
 
 void Bus::load(string cfg) {
   try {
-    if(IS_DEBUG_ON)  if(IS_DEBUG_ON) cout  << "\t[\033[31mBus\033[0m]load(" << cfg << ")" << endl;
+    if(IS_DEBUG_ON)  cout  << "\t[\033[31mBus\033[0m]load(" << cfg << ")" << endl;
     list<option_t> options = parse_cfg(cfg);
     label = find_in_cfg("LABEL", options);
     width = stoi(find_in_cfg("WIDTH", options));

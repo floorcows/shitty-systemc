@@ -44,7 +44,7 @@ void Display::simulate() {
 	  refresh_counter= 0;
 	  
 	  dataValue dv = read();
-	  if (dv.flag) cout  << "[\033[31mDisplay\033[0m]:\t" ;
+	  if (dv.flag) cout  << "[\033[30mDisplay\033[0m]:\t" ;
       while (dv.flag) {
         cout << dv.value << endl << "\t\t";
         dv = read();
