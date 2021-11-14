@@ -103,7 +103,7 @@ dataValue Bus::read() {
     if(IS_DEBUG_ON) cout << "ready.front()" << endl;
     dv.value = ready.front().value;
     if(IS_DEBUG_ON) cout << "pop.front()" << endl;
-    pending.pop_front();
+    ready.pop_front();
   }
 
   return dv;
