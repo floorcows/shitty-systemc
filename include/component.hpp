@@ -24,7 +24,7 @@ public:
   virtual void bind(list<component *> member) { member.size(); }
   virtual string get_label() {
     return "NULL";
-    DEBUG("Calling get_lbal on component!");
+    DEBUG("Calling get_label on component!");
   };
   virtual dataValue read() {
     return {0, 0};
