@@ -1,24 +1,24 @@
 #include "Display.hpp"
 
 Display::Display() {
-  if(IS_DEBUG_ON)  if(IS_DEBUG_ON) cout  << "\t[\033[31mDisplay\033[0m]constructor" << endl;
+  if (IS_DEBUG_ON)
+    if (IS_DEBUG_ON)
+      cout << "\t[\033[31mDisplay\033[0m]constructor" << endl;
   refresh_counter = 0;
 }
 
 Display::~Display() {
-  if(IS_DEBUG_ON)  if(IS_DEBUG_ON) cout  << "\t[\033[31mDisplay\033[0m]destructor" << endl;
+  if (IS_DEBUG_ON)
+    if (IS_DEBUG_ON)
+      cout << "\t[\033[31mDisplay\033[0m]destructor" << endl;
 }
 
 void Display::load(string cfg) {
   try {
-     if(IS_DEBUG_ON) cout  << "\t[\033[31mDisplay\033[0m]load(" << cfg << ")" << endl;
+    if (IS_DEBUG_ON)
+      cout << "\t[\033[31mDisplay\033[0m]load(" << cfg << ")" << endl;
     list<option_t> options = parse_cfg(cfg);
     source = find_in_cfg("SOURCE", options);
-	//source = "Main processing unit";
-	//source = "My bus 1";
-	//source = "Coproc";
-	//source = "Main processing unit";
-	//source = "Main processing unit";
     refresh = stoi(find_in_cfg("REFRESH", options));
     label = "NULL";
   } catch (const exception &ex) {
@@ -37,53 +37,41 @@ void Display::print() {
 
 void Display::simulate() {
   // TODO
-  refresh_counter ++;
-  if(IS_DEBUG_ON)  cout  << "\t[\033[31mDisplay\033[0m]simulate" << endl;
-  if(refresh_counter == refresh){
-	   
-	  refresh_counter= 0;
-	  
-	  dataValue dv = read();
+  refresh_counter++;
+  if (IS_DEBUG_ON)
+    cout << "\t[\033[31mDisplay\033[0m]simulate" << endl;
+  if (refresh_counter == refresh) {
 
-	  if (dv.flag) cout << endl << "[\033[34mDisplay\033[0m]:\t" << endl ;
+    refresh_counter = 0;
 
-      while (dv.flag) {
-        cout << "\t\t"<< dv.value << endl ;
-        dv = read();
-      }
-	 //cout << endl;
+    dataValue dv = read();
+
+    if (dv.flag)
+      cout << endl << "[\033[34mDisplay\033[0m]:\t" << endl;
+
+    while (dv.flag) {
+      cout << "\t\t" << dv.value << endl;
+      dv = read();
+    }
   }
-  
 }
 
-string Display::get_label(){
-  return label;
-}
+string Display::get_label() { return label; }
 
-dataValue Display::read(){
+dataValue Display::read() {
   return sourcePointer->read();
-  return {0,0};
-
+  return {0, 0};
 }
 
 void Display::bind(list<component *> members) {
-  if(IS_DEBUG_ON) cout << "Binding Display: " << label << endl;
-  for( component * member : members ){
-    if( !source.compare(member->get_label()) ){
+  if (IS_DEBUG_ON)
+    cout << "Binding Display: " << label << endl;
+  for (component *member : members) {
+    if (!source.compare(member->get_label())) {
       sourcePointer = member;
     }
   }
   DEBUG("Display is bound to: ");
-  if(IS_DEBUG_ON) sourcePointer->print();
+  if (IS_DEBUG_ON)
+    sourcePointer->print();
 }
-
-
-
-
-
-
-
-
-
-
-

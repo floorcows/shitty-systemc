@@ -7,3 +7,4 @@
 -lm
 -I
 include/
+-DIS_DEBUG_ON=1

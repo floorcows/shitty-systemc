@@ -42,11 +42,11 @@ void Platform::load_components() {
 }
 
 void Platform::print() {
-  cout << "Printing platform's contents!" << endl;
+  cout << "Printing the platform's content!" << endl;
   for (component *comp : members) {
     comp->print();
   }
-  cout << "Done printing! kitler" << endl;
+  cout << "Done printing content!" << endl;
 }
 
 void Platform::simulate() {
@@ -57,9 +57,9 @@ void Platform::simulate() {
 }
 
 void Platform::bind() {
-  cout << "Platform bind!" << endl;
+  cout << "Starting platform bind!" << endl;
   for (component *comp : members) {
     comp->bind(members);
   }
-  cout << "Done platform bind! kitler" << endl;
+  cout << "Platform bind complete." << endl;
 }

@@ -1,5 +1,5 @@
 CXX      := -c++
-CXXFLAGS := -pedantic-errors -Wall -Wextra -Werror
+CXXFLAGS := -pedantic-errors -Wall -Wextra -Werror -DIS_DEBUG_ON=0
 LDFLAGS  := -L/usr/lib -lstdc++ -lm
 BUILD    := ./build
 OBJ_DIR  := $(BUILD)/objects
@@ -17,6 +17,8 @@ DEPENDENCIES \
 
 all: build $(TARGET)
 
+verbose: CXXFLAGS := -pedantic-errors -Wall -Wextra -Werror -DIS_DEBUG_ON=1
+verbose: clean all
 
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(@D)

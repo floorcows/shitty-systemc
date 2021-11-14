@@ -22,7 +22,6 @@ void Memory::load(string cfg) {
     access = stoi(find_in_cfg("ACCESS", options));
     source = find_in_cfg("SOURCE", options);
     current_access = 0;
-    // list<dataValue> memory;
   } catch (const exception &ex) {
     cout << "ERROR: " << ex.what() << "[Memory.cpp:Memory::load()]" << endl;
     cerr << "ERROR: " << ex.what() << "[Memory.cpp:Memory::load()]" << endl;
@@ -36,7 +35,6 @@ void Memory::print() {
   cout << "   Size     :\t" << size << endl;
   cout << "   Access   :\t" << access << endl;
   cout << "   Source   :\t" << source << endl;
-  // list<dataValue> memory;
   cout << endl;
 }
 
