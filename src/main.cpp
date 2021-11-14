@@ -135,7 +135,6 @@ int main() {
 	
 	cout << endl <<endl;
 
->>>>>>> shitty-robert
 	
 	//---------------------------------------------------
 	
@@ -146,7 +145,6 @@ int main() {
   } catch (const exception &ex) {
 	cout << "Exception: '" << ex.what() << "' in [main()]" << endl;
 	cerr << "Exception: '" << ex.what() << "' in [main()]" << endl;
->>>>>>> 076a05a30766aadd366518b23289ff886c8fb013
     exit(1);
   }
   exit(0);
