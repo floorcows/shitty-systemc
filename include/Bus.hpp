@@ -8,6 +8,7 @@ public:
   void load(string cfg);
   dataValue read();
   void print();
+  virtual void bind(list<component*> member);
   
   // constructors
   Bus();
@@ -17,7 +18,7 @@ private:
   list<dataValue> pending;
   list<dataValue> ready;
   int counter;
-   
+  
   string label;
   int width;
   string source;

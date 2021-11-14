@@ -7,6 +7,7 @@ public:
   void simulate();
   void load(string cfg);
   void print();
+  virtual void bind(list<component*> member){member.size();}
 
   // constructors
   Display();

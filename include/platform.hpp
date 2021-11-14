@@ -13,6 +13,7 @@ public:
   void load_components();
   void simulate();
   void print();
+  void bind();
 
   //constructors
   Platform(string cfg);

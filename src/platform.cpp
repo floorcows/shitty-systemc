@@ -57,3 +57,11 @@ void Platform::simulate(){
   }
   cout << "Done simulating! kitler" << endl;
 }
+
+void Platform::bind(){
+  cout << "Simulating platform!" << endl;
+  for(component * comp : members){
+    comp->bind(members);
+  }
+  cout << "Done simulating! kitler" << endl;
+}

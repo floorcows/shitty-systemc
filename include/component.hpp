@@ -22,6 +22,7 @@ public:
   virtual void simulate();
   virtual void load(string cfg);
   virtual void print();
+  virtual void bind(list<component*> member){member.size();}
 
   // constructors
    component();

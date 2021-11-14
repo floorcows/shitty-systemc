@@ -101,8 +101,8 @@ int main() {
 	cout << endl <<endl;
 	int counter =0;
 	dataValue dv = test_cpu.read();
-	while(dv.flag){ 
-      cout <<dv.value << endl;	
+	while(dv.flag){
+      cout <<dv.value << endl;
 	  dv = test_cpu.read();
 	  counter ++;
 	}
