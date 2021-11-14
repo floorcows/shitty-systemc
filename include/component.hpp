@@ -22,14 +22,8 @@ public:
   virtual void load(string cfg);
   virtual void print();
   virtual void bind(list<component *> member);
-  virtual string get_label() {
-    return "NULL";
-    DEBUG("Calling get_label on component!");
-  };
-  virtual dataValue read() {
-    return {0, 0};
-    DEBUG("Calling read on component!");
-  };
+  virtual string get_label();
+  virtual dataValue read();
 
   // constructors
   component();
