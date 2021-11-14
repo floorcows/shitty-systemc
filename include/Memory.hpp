@@ -7,12 +7,14 @@ public:
   void simulate();
   void load(string cfg);
   void print();
-  virtual void bind(list<component*> member){member.size();}
-  
+  void bind(list<component *> member) { member.size(); }
+  string get_label();
+  dataValue read();
+
   // constructors
   Memory();
   ~Memory();
-  
+
 private:
   string label;
   int size;

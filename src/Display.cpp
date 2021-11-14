@@ -16,6 +16,7 @@ void Display::load(string cfg) {
     list<option_t> options = parse_cfg(cfg);
     source = find_in_cfg("SOURCE", options);
     refresh = stoi(find_in_cfg("REFRESH", options));
+    label = "NULL";
   } catch (const exception &ex) {
     cout << "ERROR: " << ex.what() << "[Display.cpp:Display::load()]" << endl;
     cerr << "ERROR: " << ex.what() << "[Display.cpp:Display::load()]" << endl;
@@ -32,4 +33,13 @@ void Display::print() {
 
 void Display::simulate() {
   // TODO
+}
+
+string Display::get_label(){
+  return label;
+}
+
+dataValue Display::read(){
+  DEBUG("Calling read() on Display!");
+  return {0,0};
 }

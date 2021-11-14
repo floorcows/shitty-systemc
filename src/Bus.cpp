@@ -2,23 +2,22 @@
 
 Bus::Bus() {
   // TODO
-  cout << "\t[\033[31mBus\033[0m]constructor" << endl;
+  if(IS_DEBUG_ON) cout << "\t[\033[31mBus\033[0m]constructor" << endl;
 }
 
 Bus::~Bus() {
   // TODO
-  cout << "\t[\033[31mBus\033[0m]destructor" << endl;
+  if(IS_DEBUG_ON) cout << "\t[\033[31mBus\033[0m]destructor" << endl;
 }
 
 void Bus::load(string cfg) {
   try {
-    cout << "\t[\033[31mBus\033[0m]load(" << cfg << ")" << endl;
+    if(IS_DEBUG_ON) cout << "\t[\033[31mBus\033[0m]load(" << cfg << ")" << endl;
     list<option_t> options = parse_cfg(cfg);
     label = find_in_cfg("LABEL", options);
     width = stoi(find_in_cfg("WIDTH", options));
     source = find_in_cfg("SOURCE", options);
   } catch (const exception &ex) {
-    cout << "ERROR: " << ex.what() << "[Bus.cpp:Bus::load()]" << endl;
     cerr << "ERROR: " << ex.what() << "[Bus.cpp:Bus::load()]" << endl;
     exit(1);
   }
@@ -34,9 +33,33 @@ void Bus::print() {
 }
 
 void Bus::bind(list<component *> members){
-  members.size();
+  if(IS_DEBUG_ON) cout << "Binding Bus: " << label << endl;
+  for( component * member : members ){
+    if( !source.compare(member->get_label()) ){
+      sourcePointer = member;
+    }
+  }
+  DEBUG("Bus is bound to: ");
+  if(IS_DEBUG_ON) sourcePointer->print();
 }
 
+// Bus simulation step
 void Bus::simulate() {
-  // TODO
+
+  //M oving pending values to ready values
+  while( !pending.empty() ){
+    ready.push_back(pending.back());
+    pending.pop_back();
+  }
+
+  // Fetching new pending values
+}
+
+string Bus::get_label(){
+  return label;
+}
+
+dataValue Bus::read(){
+  DEBUG("Calling read() on Bus!");
+  return {0,0};
 }

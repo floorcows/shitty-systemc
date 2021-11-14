@@ -225,3 +225,7 @@ double Register::read() {
   }
   return 0;
 }
+
+string Cpu::get_label(){
+  return label;
+}

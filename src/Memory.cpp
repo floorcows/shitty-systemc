@@ -41,3 +41,12 @@ cout << endl;
 void Memory::simulate(){
 	//TODO
 }
+
+string Memory::get_label(){
+  return label;
+}
+
+dataValue Memory::read(){
+  DEBUG("Calling read() on Memory!");
+  return {0,0};
+}

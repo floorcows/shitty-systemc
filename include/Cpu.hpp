@@ -26,7 +26,7 @@ public:
   double read();
   void write(double value);
   bool is_not_empty();
-  virtual void bind(list<component*> member){member.size();}
+  void bind(list<component *> member) { member.size(); }
 
   // constructors
   Register();
@@ -43,6 +43,7 @@ public:
   void print();
   // TODO
   dataValue read();
+  string get_label();
 
   // constructors
   Cpu();
