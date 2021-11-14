@@ -39,11 +39,11 @@ void Memory::print() {
 
 void Memory::simulate() {
    if(IS_DEBUG_ON) cout  << "\t[\033[31mMemory: " << label << "\033[0m]simulate" << endl;
-  if(current_access != access) return;
+  if(current_access == access) return;
   current_access++;
   dataValue value;
   while((value = sourcePointer->read()).flag){
-    cout << "\t Adding value: " << value.value << " to memory." << endl;
+    if(IS_DEBUG_ON) cout << "\t Adding value: " << value.value << " to memory." << endl;
     if(memory.size() == size - 1) return;
     memory.push_front(value);
   }
@@ -54,12 +54,14 @@ string Memory::get_label() { return label; }
 dataValue Memory::read() {
   DEBUG("Calling read() on Memory!");
   dataValue out;
-  if(memory.size() == 0){
+  if(memory.empty()){
     out.flag = 0;
     out.value = 0;
   }
-  out = memory.back();
-  memory.pop_back();
+  else {out = memory.back();
+  memory.pop_back();}
+  
+   if(IS_DEBUG_ON) cout << "READ " << out.value << " " << out.flag << endl; 
   return out;
 }
 
@@ -73,3 +75,30 @@ void Memory::bind(list<component *> members){
   DEBUG("Memory is bound to: ");
   if(IS_DEBUG_ON) sourcePointer->print();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

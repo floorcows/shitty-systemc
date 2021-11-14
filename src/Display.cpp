@@ -14,6 +14,11 @@ void Display::load(string cfg) {
      if(IS_DEBUG_ON) cout  << "\t[\033[31mDisplay\033[0m]load(" << cfg << ")" << endl;
     list<option_t> options = parse_cfg(cfg);
     source = find_in_cfg("SOURCE", options);
+	//source = "Main processing unit";
+	//source = "My bus 1";
+	//source = "Main processing unit";
+	//source = "Main processing unit";
+	//source = "Main processing unit";
     refresh = stoi(find_in_cfg("REFRESH", options));
     label = "NULL";
   } catch (const exception &ex) {
@@ -33,8 +38,9 @@ void Display::print() {
 void Display::simulate() {
   // TODO
   refresh_counter ++;
+  if(!IS_DEBUG_ON)  cout  << "\t[\033[31mDisplay\033[0m]simulate" << endl;
   if(refresh_counter == refresh){
-	   if(IS_DEBUG_ON)  if(IS_DEBUG_ON) cout  << "\t[\033[31mDisplay\033[0m]simulate" << endl;
+	   
 	  refresh_counter= 0;
 	  
 	  dataValue dv = read();
@@ -55,7 +61,7 @@ string Display::get_label(){
 dataValue Display::read(){
   DEBUG("Calling read() on Display! Reading from "+sourcePointer->get_label() +". ");
   //TODO A Display does not return 0 value
-  //return sourcePointer->read();
+  return sourcePointer->read();
   return {0,0};
 
 }
