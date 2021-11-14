@@ -8,17 +8,20 @@ public:
   void load(string cfg);
   dataValue read();
   void print();
-  
+  void bind(list<component *> member);
+  string get_label();
+
   // constructors
   Bus();
   ~Bus();
-  
+
 private:
   list<dataValue> pending;
   list<dataValue> ready;
   int counter;
-   
+
   string label;
+  component *sourcePointer;
   int width;
   string source;
 };

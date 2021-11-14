@@ -1,20 +1,20 @@
 #ifndef PLATFORM_H
 #define PLATFORM_H
 
-#include "component.hpp"
-#include "Cpu.hpp"
 #include "Bus.hpp"
-#include "Memory.hpp"
+#include "Cpu.hpp"
 #include "Display.hpp"
-
+#include "Memory.hpp"
+#include "component.hpp"
 
 class Platform {
 public:
   void load_components();
   void simulate();
   void print();
+  void bind();
 
-  //constructors
+  // constructors
   Platform(string cfg);
 
 private:

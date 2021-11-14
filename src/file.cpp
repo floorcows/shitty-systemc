@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <bits/stdc++.h>
 #include <errno.h>
 #include <exception>
@@ -7,7 +8,6 @@
 #include <sstream>
 #include <stdlib.h>
 #include <string>
-#include <algorithm>
 
 #include "file.hpp"
 #define debug_print 0
@@ -15,7 +15,7 @@
 using namespace std;
 
 //-------------------------------------------------------------------------------
-//Stores each file line in a string list
+// Stores each file line in a string list
 list<string> file_to_list(string path) {
   if (debug_print) {
     cout << "\t[\033[31mfile_to_list\033[0m]" << endl;
@@ -26,9 +26,11 @@ list<string> file_to_list(string path) {
     ifstream f(path);
 
     if (!f) {
-      cout << "ERROR: Target file could not be opened! [file.cpp:file_to_list] "<< endl;
-      cerr << "ERROR: Target file could not be opened! [file.cpp:file_to_list] "<< endl;
-           
+      cout << "ERROR: Target file could not be opened! [file.cpp:file_to_list] "
+           << endl;
+      cerr << "ERROR: Target file could not be opened! [file.cpp:file_to_list] "
+           << endl;
+
       exit(1);
     }
     string line;
@@ -37,9 +39,11 @@ list<string> file_to_list(string path) {
       mylist.push_back(line);
       // cout << mylist.back() << endl;
     }
-  } catch (const exception &ex) { 
-	cout << "Exception: '" << ex.what() << "' in [file.cpp:file_to_list]" << endl;  
-	cerr << "Exception: '" << ex.what() << "' in [file.cpp:file_to_list]" << endl; 
+  } catch (const exception &ex) {
+    cout << "Exception: '" << ex.what() << "' in [file.cpp:file_to_list]"
+         << endl;
+    cerr << "Exception: '" << ex.what() << "' in [file.cpp:file_to_list]"
+         << endl;
     exit(1);
   }
 
@@ -90,60 +94,44 @@ bool string_contains(string str1, string str2) {
   }
 */
 
-
 //-------------------------------------------------------------------------------
 // Parses configs
-list<option_t> parse_cfg(string cfg){
-  //cout << "test\n\n";
+list<option_t> parse_cfg(string cfg) {
+  // cout << "test\n\n";
   list<option_t> output;
   list<string> cfg_lines = file_to_list(cfg);
-  for(string line : cfg_lines){
+  for (string line : cfg_lines) {
     option_t option;
     stringstream ss(line);
-    getline( ss, option.field, ':' );
-    getline( ss, option.data, ':' );
-	option.field = trim(option.field);
-	option.data  = trim(option.data );
+    getline(ss, option.field, ':');
+    getline(ss, option.data, ':');
+    option.field = trim(option.field);
+    option.data = trim(option.data);
     output.push_back(option);
   }
   return output;
 }
 //-------------------------------------------------------------------------------
 // Finds element in a parsed config file
-string find_in_cfg(string field,list<option_t> options){
-	field = trim(field);
-  for(option_t option : options){
-    if(option.field == field){
+string find_in_cfg(string field, list<option_t> options) {
+  field = trim(field);
+  for (option_t option : options) {
+    if (option.field == field) {
       return trim(option.data);
     }
   }
   return "NULL_STRING";
 }
 
-
-
-
-
-
-
-
-
-
 //-------------------------------------------------------------------------------
 // trim strings and remove space from both sides
 const string WHITESPACE = " \n\r\t\f\v";
-string ltrim(const string s)
-{
-    size_t start = s.find_first_not_of(WHITESPACE);
-    return (start == string::npos) ? "" : s.substr(start);
+string ltrim(const string s) {
+  size_t start = s.find_first_not_of(WHITESPACE);
+  return (start == string::npos) ? "" : s.substr(start);
 }
-string rtrim(const string s)
-{
-    size_t end = s.find_last_not_of(WHITESPACE);
-    return (end == string::npos) ? "" : s.substr(0, end + 1);
-} 
-string trim(const string s) {
-    return rtrim(ltrim(s));
+string rtrim(const string s) {
+  size_t end = s.find_last_not_of(WHITESPACE);
+  return (end == string::npos) ? "" : s.substr(0, end + 1);
 }
- 
-
+string trim(const string s) { return rtrim(ltrim(s)); }

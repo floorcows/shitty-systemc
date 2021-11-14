@@ -15,7 +15,7 @@ public:
 private:
   list<string> program_list;
   list<string>::iterator program_list_it;
-  
+
   string file_path;
   bool done;
   bool nop_sended;
@@ -23,15 +23,14 @@ private:
 
 class Register {
 public:
-
   double read();
   void write(double value);
   bool is_not_empty();
-  
+  void bind(list<component *> member) { member.size(); }
+
   // constructors
   Register();
   ~Register();
-  
 
 private:
   list<double> reg_list;
@@ -42,22 +41,22 @@ public:
   void simulate();
   void load(string cfg);
   void print();
-  //TODO
+  // TODO
   dataValue read();
-  
+  string get_label();
 
   // constructors
   Cpu();
   ~Cpu();
-  
-	Program prog; //TODO return private
+
+  Program prog; // TODO return private
 private:
   string label;
   int cores;
   int frequency;
   string prog_path;
   int current_active_core;
-  
+
   Register reg;
 };
 #endif

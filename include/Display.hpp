@@ -7,13 +7,16 @@ public:
   void simulate();
   void load(string cfg);
   void print();
+  void bind(list<component *> member) { member.size(); }
+  string get_label();
+  dataValue read();
 
   // constructors
   Display();
   ~Display();
 
 private:
-  //string label;
+  string label;
   int refresh;
   string source;
 };
