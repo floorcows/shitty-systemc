@@ -69,5 +69,6 @@ string Bus::get_label(){
 dataValue Bus::read(){
   //TODO A bus does not return 0 value
   DEBUG("Calling read() on Bus!");
+  //return sourcePointer->read();
   return {0,0};
 }

@@ -7,7 +7,7 @@ public:
   void simulate();
   void load(string cfg);
   void print();
-  void bind(list<component *> member) { member.size(); }
+  void bind(list<component *> member); 
   string get_label();
   dataValue read();
 
@@ -19,6 +19,9 @@ private:
   string label;
   int refresh;
   string source;
+  
+  component *sourcePointer;
+  int refresh_counter;
 };
 
 #endif
