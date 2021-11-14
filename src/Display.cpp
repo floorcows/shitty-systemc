@@ -38,7 +38,7 @@ void Display::print() {
 void Display::simulate() {
   // TODO
   refresh_counter ++;
-  if(!IS_DEBUG_ON)  cout  << "\t[\033[31mDisplay\033[0m]simulate" << endl;
+  if(IS_DEBUG_ON)  cout  << "\t[\033[31mDisplay\033[0m]simulate" << endl;
   if(refresh_counter == refresh){
 	   
 	  refresh_counter= 0;
