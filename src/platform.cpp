@@ -50,7 +50,7 @@ void Platform::print() {
 }
 
 void Platform::simulate() {
-  if(IS_DEBUG_ON) cout << "Simulating platform!" << endl;
+  if(IS_DEBUG_ON) cout << "----------------Simulating platform!----------------" << endl;
   for (component *comp : members) {
     comp->simulate();
   }

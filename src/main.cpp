@@ -110,7 +110,7 @@ int main() {
 	myPlatform.bind();
 /*----------------well done main------------------------------------------------------------------*/
 
-    for (int kitler = 1 ; kitler <100 ; kitler ++){
+    for (int kitler = 1 ; kitler <15 ; kitler ++){
     myPlatform.simulate();
     }
 
