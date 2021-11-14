@@ -51,7 +51,7 @@ void Cpu::simulate() {
         it = word_list.begin();
         str_cmd = *it;
         it++;
-        str_a = *it;
+    str_a = *it;
         it++;
         str_b = *it;
         it++;

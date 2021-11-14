@@ -43,15 +43,24 @@ void Bus::bind(list<component *> members){
 // Bus simulation step
 void Bus::simulate() {
 
-  //M oving pending values to ready values
+  //Moving pending values to ready values
   while( !pending.empty() ){
     ready.push_back(pending.back());
+    if(IS_DEBUG_ON) cout << "Moving value: " << pending.back().value << " to Ready" << endl;
     pending.pop_back();
   }
 
   // Fetching new pending values
+  int counter = 0;
+  dataValue value;
+  while((value = sourcePointer->read()).flag && counter < width){
+    counter++;
+    pending.push_front(value);
+    if(IS_DEBUG_ON) cout << "Moving value: " << pending.back().value << " to Pending" << endl;
+  }
 }
 
+// Get bus label
 string Bus::get_label(){
   return label;
 }
