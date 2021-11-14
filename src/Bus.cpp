@@ -50,7 +50,7 @@ void Bus::simulate() {
     pending.pop_back();
   }
 
-  // Fetching new pending values
+  // Fetching new pending values (only up to bus.width)
   int counter = 0;
   dataValue value;
   while((value = sourcePointer->read()).flag && counter < width){
