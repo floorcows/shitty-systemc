@@ -53,7 +53,7 @@ string Display::get_label(){
 }
 
 dataValue Display::read(){
-  DEBUG("Calling read() on Display!");
+  DEBUG("Calling read() on Display! Reading from "+sourcePointer->get_label() +". ");
   //TODO A Display does not return 0 value
   //return sourcePointer->read();
   return {0,0};
