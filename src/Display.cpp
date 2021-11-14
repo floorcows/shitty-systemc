@@ -45,13 +45,13 @@ void Display::simulate() {
 	  
 	  dataValue dv = read();
 
-	  if (dv.flag) cout  << "\t[\033[34mDisplay\033[0m]:\t" ;
+	  if (dv.flag) cout << endl << "[\033[34mDisplay\033[0m]:\t" << endl ;
 
       while (dv.flag) {
-        cout << dv.value << endl << "\t\t\t";
+        cout << "\t\t"<< dv.value << endl ;
         dv = read();
       }
-	  cout << endl;
+	 //cout << endl;
   }
   
 }
