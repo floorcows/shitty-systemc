@@ -58,11 +58,13 @@ void Bus::simulate() {
     counter++;
     pending.push_front(value);
     if(IS_DEBUG_ON) cout << "Moving value number" << counter << ": " << pending.front().value << " to Pending" << endl;
-    cout << "Pending: ";
-    for(dataValue value : pending){
-      cout << value.value << " | ";
+    if(IS_DEBUG_ON) cout << "Pending: ";
+    if(IS_DEBUG_ON){
+      for(dataValue value : pending){
+        cout << value.value << " | ";
+      }
+      cout << endl;
     }
-    cout << endl;
   }
 }
 
