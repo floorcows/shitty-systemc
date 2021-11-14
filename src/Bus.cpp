@@ -76,5 +76,16 @@ string Bus::get_label(){
 dataValue Bus::read(){
   //TODO A bus does not return 0 value
   DEBUG("Calling read() on Bus!");
-  return {0,0};
+  
+  dataValue dv = {0,0};
+  dv.flag = !pending.empty();	
+  if(dv.flag){
+  dv.value = pending.front().value;
+  pending.pop_front();
+  }
+  
+  return dv;
+  
+  
+  //return {0,0};
 }
