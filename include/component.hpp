@@ -4,6 +4,7 @@
 #include <iostream>
 #include <list>
 #include <fstream>
+#include <sstream>
 #include <string>
 #include <exception>
 #include <errno.h>

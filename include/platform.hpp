@@ -12,12 +12,13 @@ class Platform {
 public:
   void load_components();
   void simulate();
+  void print();
 
   //constructors
   Platform(string cfg);
 
 private:
-  list<component> members;
+  list<component *> members;
   list<string> member_paths;
 };
 

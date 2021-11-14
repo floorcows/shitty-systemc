@@ -18,18 +18,23 @@ private:
   
   string file_path;
   bool done;
+  bool nop_sended;
 };
 
 class Register {
 public:
-  dataValue read();
-  void write(dataValue value);
 
+  double read();
+  void write(double value);
+  bool is_not_empty();
+  
   // constructors
   Register();
+  ~Register();
+  
 
 private:
-  list<dataValue> contents;
+  list<double> reg_list;
 };
 
 class Cpu : virtual public component {
@@ -37,7 +42,9 @@ public:
   void simulate();
   void load(string cfg);
   void print();
+  //TODO
   dataValue read();
+  
 
   // constructors
   Cpu();

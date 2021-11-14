@@ -99,7 +99,7 @@ void Cpu::simulate(){
            }
 	 	  cout << val  <<endl;
 	      // TODO add val to the fifo register of the cpu */
-	 
+			reg.write(val);
 	   }
 	   else{
 		   if( current_active_core < (cores - 1)){
@@ -119,18 +119,20 @@ void Cpu::simulate(){
 
  
 		
-
-
-
- //*************************************Register***********************************
-Register::Register(){
-	cout << "\t[\033[31mRegister\033[0m]constructor" << endl;
+dataValue Cpu::read(){
+	//cout << "\t[\033[31mCpu\033[0m]read"<< endl;
+    dataValue dv;
+    dv.flag =reg.is_not_empty();
+	dv.value=reg.read();
+    return dv;
 }
+
  
  //*************************************Program***********************************
 Program::Program(){
 	cout << "\t[\033[31mProgram\033[0m]constructor" << endl;
 	done = false ;
+	nop_sended = false;
 }
 
 void Program::set_file_path(string path){
@@ -154,7 +156,13 @@ string Program::compute(){
 	   return str;
 	 }
 	else {
+	 
+    if(nop_sended){ 
 	  done = true;
+	 }
+	else{
+	  nop_sended = true;
+	 }
 	  return "NOP 0 0";
 	}
 	
@@ -188,10 +196,56 @@ void Program::reset(){
 	cout << endl;
     program_list_it = program_list.begin();
 	done = false;
+	nop_sended = false;
 	
 }
 
 bool Program::get_done(){
 	return done;
 }
+
+
+ //*************************************Register***********************************
+Register::Register(){
+	cout << "\t[\033[31mRegister\033[0m]constructor" << endl;
+}
+
+Register::~Register(){
+	cout << "\t[\033[31mRegister\033[0m]destructor" << endl;
+}
+
+bool Register::is_not_empty(){
+	//cout << "\t[\033[31mRegister\033[0m]is_not_empty()" << endl;
+	return (!reg_list.empty());
+}
+
+void Register::write(double value){
+	cout << "\t[\033[31mRegister\033[0m]write("<< value <<")" << endl;
+	reg_list.push_back(value);
+
+}
+
+double Register::read(){
+	//cout << "\t[\033[31mRegister\033[0m]read()" << endl;
+	
+	if(is_not_empty()){
+	double dd = reg_list.front();
+	reg_list.pop_front();
+	return dd;}
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

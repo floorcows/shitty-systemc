@@ -7,11 +7,11 @@ public:
   void simulate();
   void load(string cfg);
   void print();
-  
+
   // constructors
   Display();
   ~Display();
-  
+
 private:
   //string label;
   int refresh;
