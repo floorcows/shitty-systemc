@@ -16,7 +16,7 @@ void Display::load(string cfg) {
     source = find_in_cfg("SOURCE", options);
 	//source = "Main processing unit";
 	//source = "My bus 1";
-	//source = "Main processing unit";
+	//source = "Coproc";
 	//source = "Main processing unit";
 	//source = "Main processing unit";
     refresh = stoi(find_in_cfg("REFRESH", options));
@@ -38,7 +38,7 @@ void Display::print() {
 void Display::simulate() {
   // TODO
   refresh_counter ++;
-  if(!IS_DEBUG_ON)  cout  << "\t[\033[31mDisplay\033[0m]simulate" << endl;
+  if(IS_DEBUG_ON)  cout  << "\t[\033[31mDisplay\033[0m]simulate" << endl;
   if(refresh_counter == refresh){
 	   
 	  refresh_counter= 0;
