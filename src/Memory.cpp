@@ -38,11 +38,13 @@ void Memory::print() {
 }
 
 void Memory::simulate() {
+   if(IS_DEBUG_ON) cout  << "\t[\033[31mMemory: " << label << "\033[0m]simulate" << endl;
   if(current_access != access) return;
   current_access++;
   dataValue value;
   while((value = sourcePointer->read()).flag){
-    if(memory.size() >= 31) return;
+    cout << "\t Adding value: " << value.value << " to memory." << endl;
+    if(memory.size() == size - 1) return;
     memory.push_front(value);
   }
 }

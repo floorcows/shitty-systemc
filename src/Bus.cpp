@@ -42,6 +42,7 @@ void Bus::bind(list<component *> members){
 
 // Bus simulation step
 void Bus::simulate() {
+   if(IS_DEBUG_ON) cout  << "\t[\033[31mBus: " << label << "\033[0m]simulate" << endl;
 
   //Moving pending values to ready values
   while( !pending.empty() ){

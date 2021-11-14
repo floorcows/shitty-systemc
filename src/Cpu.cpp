@@ -37,7 +37,7 @@ void Cpu::print() {
 
 void Cpu::simulate() {
 
-   if(IS_DEBUG_ON) cout  << "\t[\033[31mCpu\033[0m]simulate" << endl;
+   if(IS_DEBUG_ON) cout  << "\t[\033[31mCpu: " << label << "\033[0m]simulate" << endl;
   for (int i = 0; i < frequency; i++) {
     string commandline = prog.compute();
     if (!prog.get_done()) {

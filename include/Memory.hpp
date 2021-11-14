@@ -18,7 +18,7 @@ public:
 private:
   component * sourcePointer;
   string label;
-  int size;
+  unsigned int size;
   int access;
   int current_access;
   string source;
