@@ -34,6 +34,7 @@ void Display::simulate() {
   // TODO
   refresh_counter ++;
   if(refresh_counter == refresh){
+	   if(IS_DEBUG_ON)  if(IS_DEBUG_ON) cout  << "\t[\033[31mDisplay\033[0m]simulate" << endl;
 	  refresh_counter= 0;
 	  
 	  dataValue dv = read();
