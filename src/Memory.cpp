@@ -2,17 +2,17 @@
 
 Memory::Memory() {
   if (IS_DEBUG_ON)
-    cout << "\t[\033[31mMemory\033[0m]constructor" << endl;
+     if(IS_DEBUG_ON) cout  << "\t[\033[31mMemory\033[0m]constructor" << endl;
 }
 
 Memory::~Memory() {
   if (IS_DEBUG_ON)
-    cout << "\t[\033[31mMemory\033[0m]destructor" << endl;
+     if(IS_DEBUG_ON) cout  << "\t[\033[31mMemory\033[0m]destructor" << endl;
 }
 
 void Memory::load(string cfg) {
   try {
-    cout << "\t[\033[31mMemory\033[0m]load(" << cfg << ")" << endl;
+     if(IS_DEBUG_ON) cout  << "\t[\033[31mMemory\033[0m]load(" << cfg << ")" << endl;
     list<option_t> options = parse_cfg(cfg);
     label = find_in_cfg("LABEL", options);
     size = stoi(find_in_cfg("SIZE", options));

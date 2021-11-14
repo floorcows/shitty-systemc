@@ -18,7 +18,7 @@ using namespace std;
 // Stores each file line in a string list
 list<string> file_to_list(string path) {
   if (debug_print) {
-    cout << "\t[\033[31mfile_to_list\033[0m]" << endl;
+     if(IS_DEBUG_ON) cout  << "\t[\033[31mfile_to_list\033[0m]" << endl;
   }
 
   list<string> mylist;
@@ -55,7 +55,7 @@ list<string> file_to_list(string path) {
 list<string> string_to_words(string str) {
 
   if (debug_print) {
-    cout << "\t[\033[31mstring_to_words\033[0m]" << endl;
+     if(IS_DEBUG_ON) cout  << "\t[\033[31mstring_to_words\033[0m]" << endl;
   }
 
   list<string> mylist;
@@ -75,7 +75,7 @@ list<string> string_to_words(string str) {
 // Return true if the first string contains the other
 bool string_contains(string str1, string str2) {
   if (debug_print) {
-    cout << "\t[\033[31mstring_contains\033[0m]" << endl;
+     if(IS_DEBUG_ON) cout  << "\t[\033[31mstring_contains\033[0m]" << endl;
   }
   return (strstr(str1.c_str(), str2.c_str()));
 }

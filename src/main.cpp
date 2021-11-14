@@ -7,7 +7,7 @@ using namespace std;
 int main() {
 
   try {
-    cout << "\t[\033[31mmain\033[0m]Start" << endl;
+     if(IS_DEBUG_ON) cout  << "\t[\033[31mmain\033[0m]Start" << endl;
 
     list<string> my_list = file_to_list(directory + "testdata/program.txt");
 
@@ -32,7 +32,7 @@ int main() {
             test_disp->print();
 
     */
-    Cpu test_cpu;
+    /*Cpu test_cpu;
     test_cpu.load(directory + "testdata/cpu1.txt");
     test_cpu.print();
 
@@ -103,21 +103,21 @@ int main() {
       counter++;
     }
     cout << "counter= " << counter << endl;
+*/
+	Platform myPlatform("testdata/platform.txt");
+	myPlatform.load_components();
+	myPlatform.print();
+	myPlatform.bind();
+/*----------------well done main------------------------------------------------------------------*/
 
-		Platform myPlatform("testdata/platform.txt");
-		myPlatform.load_components();
-		myPlatform.print();
-		myPlatform.bind();
-    /*----------------well done main------------------------------------------------------------------
-
-            for (int kitler = 1 ; kitler <145 ; kitler ++){
-            myPlatform.simulate();
-            }
+    for (int kitler = 1 ; kitler <100 ; kitler ++){
+    myPlatform.simulate();
+    }
 
 
-            cout << "\t[\033[31mmain\033[0m]End" << endl;
-            // Platform myPlatform("./testdata/platform.txt");
-    ----------------well done main------------------------------------------------------------------*/
+     if(IS_DEBUG_ON) cout  << "\t[\033[31mmain\033[0m]End" << endl;
+    // Platform myPlatform("./testdata/platform.txt");
+/*----------------well done main------------------------------------------------------------------*/
 
   } catch (const exception &ex) {
     cout << "Exception: '" << ex.what() << "' in [main()]" << endl;

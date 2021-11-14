@@ -1,17 +1,17 @@
 #include "Cpu.hpp"
 //*************************************Cpu***********************************
 Cpu::Cpu() {
-  if(IS_DEBUG_ON) cout << "\t[\033[31mCpu\033[0m]constructor" << endl;
+  if(IS_DEBUG_ON)  if(IS_DEBUG_ON) cout  << "\t[\033[31mCpu\033[0m]constructor" << endl;
   current_active_core = 0;
 }
 
 Cpu::~Cpu() {
-  if(IS_DEBUG_ON) cout << "\t[\033[31mCpu\033[0m]destructor" << endl;
+  if(IS_DEBUG_ON)  if(IS_DEBUG_ON) cout  << "\t[\033[31mCpu\033[0m]destructor" << endl;
 }
 
 void Cpu::load(string cfg) {
   try {
-    cout << "\t[\033[31mCpu\033[0m]load(" << cfg << ")" << endl;
+     if(IS_DEBUG_ON) cout  << "\t[\033[31mCpu\033[0m]load(" << cfg << ")" << endl;
     list<option_t> options = parse_cfg(cfg);
     label = find_in_cfg("LABEL", options);
     cores = stoi(find_in_cfg("CORES", options));
@@ -37,7 +37,7 @@ void Cpu::print() {
 
 void Cpu::simulate() {
 
-  cout << "\t[\033[31mCpu\033[0m]simulate" << endl;
+   if(IS_DEBUG_ON) cout  << "\t[\033[31mCpu\033[0m]simulate" << endl;
   for (int i = 0; i < frequency; i++) {
     string commandline = prog.compute();
     if (!prog.get_done()) {
@@ -55,7 +55,7 @@ void Cpu::simulate() {
         it++;
         str_b = *it;
         it++;
-        cout << "\tcmd:" << str_cmd << "\ta:" << str_a << "\tb:" << str_b
+        if(IS_DEBUG_ON) cout << "\tcmd:" << str_cmd << "\ta:" << str_a << "\tb:" << str_b
              << "\t";
       } catch (const exception &ex) {
         cout << "ERROR: " << ex.what()
@@ -98,19 +98,19 @@ void Cpu::simulate() {
              << endl;
         exit(1);
       }
-      cout << val << endl;
+      if(IS_DEBUG_ON) cout << val << endl;
       // TODO add val to the fifo register of the cpu */
       reg.write(val);
     } else {
       if (current_active_core < (cores - 1)) {
         current_active_core++;
-        cout << "**************************************************************"
+        if(IS_DEBUG_ON) cout << "**************************************************************"
                 "********************"
              << endl;
-        cout << "*********************************CORE #"
+        if(IS_DEBUG_ON) cout << "*********************************CORE #"
              << current_active_core + 1;
-        cout << " enabeled*********************************" << endl;
-        cout << "**************************************************************"
+        if(IS_DEBUG_ON) cout << " enabeled*********************************" << endl;
+        if(IS_DEBUG_ON) cout << "**************************************************************"
                 "********************"
              << endl;
 
@@ -121,7 +121,7 @@ void Cpu::simulate() {
 }
 
 dataValue Cpu::read() {
-  // cout << "\t[\033[31mCpu\033[0m]read"<< endl;
+  //  if(IS_DEBUG_ON) cout  << "\t[\033[31mCpu\033[0m]read"<< endl;
   dataValue dv;
   dv.flag = reg.is_not_empty();
   dv.value = reg.read();
@@ -130,7 +130,7 @@ dataValue Cpu::read() {
 
 //*************************************Program***********************************
 Program::Program() {
-  cout << "\t[\033[31mProgram\033[0m]constructor" << endl;
+   if(IS_DEBUG_ON) cout  << "\t[\033[31mProgram\033[0m]constructor" << endl;
   done = false;
   nop_sended = false;
 }
@@ -139,13 +139,13 @@ void Program::set_file_path(string path) { file_path = path; }
 
 void Program::load() {
 
-  cout << "\t[\033[31mProgram\033[0m]load()" << endl;
+   if(IS_DEBUG_ON) cout  << "\t[\033[31mProgram\033[0m]load()" << endl;
   program_list = file_to_list(file_path);
   program_list_it = program_list.begin();
 }
 
 string Program::compute() {
-  cout << "\t[\033[31mProgram\033[0m]compute" << endl;
+   if(IS_DEBUG_ON) cout  << "\t[\033[31mProgram\033[0m]compute" << endl;
 
   if (program_list_it != program_list.end()) {
     string str = *program_list_it;
@@ -163,7 +163,7 @@ string Program::compute() {
 }
 /*
 string Program::compute(){
-        cout << "\t[\033[31mProgram\033[0m]compute" <<endl;
+         if(IS_DEBUG_ON) cout  << "\t[\033[31mProgram\033[0m]compute" <<endl;
 
         if (!done){
            string str = *program_list_it;
@@ -185,7 +185,7 @@ string Program::compute(){
 void Program::reset() {
 
   cout << endl;
-  cout << "\t[\033[31mProgram\033[0m]reset()" << endl;
+   if(IS_DEBUG_ON) cout  << "\t[\033[31mProgram\033[0m]reset()" << endl;
   cout << endl;
   program_list_it = program_list.begin();
   done = false;
@@ -196,25 +196,25 @@ bool Program::get_done() { return done; }
 
 //*************************************Register***********************************
 Register::Register() {
-  cout << "\t[\033[31mRegister\033[0m]constructor" << endl;
+   if(IS_DEBUG_ON) cout  << "\t[\033[31mRegister\033[0m]constructor" << endl;
 }
 
 Register::~Register() {
-  cout << "\t[\033[31mRegister\033[0m]destructor" << endl;
+   if(IS_DEBUG_ON) cout  << "\t[\033[31mRegister\033[0m]destructor" << endl;
 }
 
 bool Register::is_not_empty() {
-  // cout << "\t[\033[31mRegister\033[0m]is_not_empty()" << endl;
+  //  if(IS_DEBUG_ON) cout  << "\t[\033[31mRegister\033[0m]is_not_empty()" << endl;
   return (!reg_list.empty());
 }
 
 void Register::write(double value) {
-  cout << "\t[\033[31mRegister\033[0m]write(" << value << ")" << endl;
+   if(IS_DEBUG_ON) cout  << "\t[\033[31mRegister\033[0m]write(" << value << ")" << endl;
   reg_list.push_back(value);
 }
 
 double Register::read() {
-  // cout << "\t[\033[31mRegister\033[0m]read()" << endl;
+  //  if(IS_DEBUG_ON) cout  << "\t[\033[31mRegister\033[0m]read()" << endl;
 
   if (is_not_empty()) {
     double dd = reg_list.front();

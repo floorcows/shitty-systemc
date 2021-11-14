@@ -1,16 +1,16 @@
 #include "Display.hpp"
 
 Display::Display() {
-  if(IS_DEBUG_ON) cout << "\t[\033[31mDisplay\033[0m]constructor" << endl;
+  if(IS_DEBUG_ON)  if(IS_DEBUG_ON) cout  << "\t[\033[31mDisplay\033[0m]constructor" << endl;
 }
 
 Display::~Display() {
-  if(IS_DEBUG_ON) cout << "\t[\033[31mDisplay\033[0m]destructor" << endl;
+  if(IS_DEBUG_ON)  if(IS_DEBUG_ON) cout  << "\t[\033[31mDisplay\033[0m]destructor" << endl;
 }
 
 void Display::load(string cfg) {
   try {
-    cout << "\t[\033[31mDisplay\033[0m]load(" << cfg << ")" << endl;
+     if(IS_DEBUG_ON) cout  << "\t[\033[31mDisplay\033[0m]load(" << cfg << ")" << endl;
     list<option_t> options = parse_cfg(cfg);
     source = find_in_cfg("SOURCE", options);
     refresh = stoi(find_in_cfg("REFRESH", options));
