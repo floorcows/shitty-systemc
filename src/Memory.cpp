@@ -13,7 +13,7 @@ Memory::~Memory() {
 
 void Memory::load(string cfg){
   try {
-  cout << "cfg" << cfg;
+  cout << "\t[\033[31mMemory\033[0m]load(" << cfg << ")"  << endl;
   list<option_t> options = parse_cfg(cfg);
   label  = find_in_cfg("LABEL", options);
   size   = stoi(find_in_cfg("SIZE", options));
@@ -29,10 +29,10 @@ void Memory::load(string cfg){
 
 void Memory::print(){
 cout << "[Memory Print]" <<endl;
-cout << "  Label    :\t"<<label<<endl;
-cout << "  Size     :\t"<<size<<endl;
-cout << "  Access   :\t"<<access<<endl;
-cout << "  Source   :\t"<<source<<endl;
+cout << "   Label    :\t"<<label<<endl;
+cout << "   Size     :\t"<<size<<endl;
+cout << "   Access   :\t"<<access<<endl;
+cout << "   Source   :\t"<<source<<endl;
 //list<dataValue> memory;
 cout << endl; 
 }

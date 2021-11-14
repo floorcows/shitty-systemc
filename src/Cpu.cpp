@@ -15,7 +15,7 @@ Cpu::~Cpu() {
 
 void Cpu::load(string cfg){
   try {
-  cout << "cfg:\t" << cfg<<endl;
+  cout << "\t[\033[31mCpu\033[0m]load(" << cfg << ")" << endl;
   list<option_t> options = parse_cfg(cfg);
   label     = find_in_cfg("LABEL", options);
   cores     = stoi(find_in_cfg("CORES", options));
@@ -32,10 +32,10 @@ void Cpu::load(string cfg){
 
 void Cpu::print(){
 cout << "[CPU Print]" <<endl;
-cout << "  Label    :\t"<<label<<endl;
-cout << "  Cores    :\t"<<cores<<endl;
-cout << "  Frequency:\t"<<frequency<<endl;
-cout << "  Prog_path:\t"<<prog_path<<endl;
+cout << "   Label    :\t"<<label<<endl;
+cout << "   Cores    :\t"<<cores<<endl;
+cout << "   Frequency:\t"<<frequency<<endl;
+cout << "   Prog_path:\t"<<prog_path<<endl;
 cout << endl; 
 }
 
